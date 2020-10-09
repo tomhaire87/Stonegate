@@ -1,0 +1,86 @@
+<?php
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+$_postCollection = $block->getPostCollection();
+$i = 1;
+?>
+<?php if ($_postCollection->count()) { ?>
+    <div class="fullwidth latest-news">
+        <div class="page-main section">
+            <div class="post-list-wrapper recent-posts">
+                <h3 class="title">Our Latest Posts</h3>
+                <div class="latest-news-slider">
+                    <ul class="post-list column-container colspan-4">
+                        <?php foreach ($_postCollection as $_post) { ?>
+                            <?php
+                            $_postUrl = $_post->getPostUrl();
+                            $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+                            ?>
+                            <li class="post-holder post-holder-<?php echo $_post->getId() ?> column">
+                                <a href="<?php echo $_postUrl ?>" class="post-content"
+	                                <?php if ($featuredImage = $_post->getFeaturedImage()) : ?>
+										style="background-image: url('<?php echo $featuredImage ?>')"
+									<?php endif ?>
+									>
+									<div class="post-inner">
+	                                    <div class="post-title">
+	                                        <span><?php echo $_postName; ?></span>
+	                                    </div>
+	                                    <div class="item post-posed-date">
+	                                        <span><?php echo $_post->getPublishDate('M d, Y') ?></span>
+	                                    </div>
+	                                    <div class="post-description clearfix">
+	                                        <div class="post-text-hld clearfix">
+	                                            <?php
+	                                            $string = strip_tags($block->getShorContent($_post));
+
+	                                            if (strlen($string) > 104) {
+	                                                $stringCut = substr($string, 0, 104);
+	                                                $string = substr($stringCut, 0, strrpos($stringCut, ' ')) . ' [...]';
+	                                            }
+	                                            echo $string;
+	                                            ?>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <?php
+                            if (++$i == 9) {
+                                break;
+                            }
+                            ?>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+			<div class="view-more-blog">
+				<a href="<?php echo $block->getUrl('news') ?>" title="<?php echo __('View Blog') ?>">
+					<div class="row">
+						<div class="col">
+							<span><?php echo __('View more from the blog') ?></span>
+						</div>
+						<div class="col text-right">
+							<span><?php echo __('View Blog') ?></span>
+							<img src="<?php echo $block->getViewFileUrl('images/icons/arrow-right-red.svg') ?>" />
+						</div>
+					</div>
+				</a>
+			</div>
+        </div>
+    </div>
+<?php } ?>

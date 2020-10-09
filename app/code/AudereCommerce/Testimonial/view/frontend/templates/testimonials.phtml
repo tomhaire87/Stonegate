@@ -1,0 +1,42 @@
+<?php
+$testimonialCollection = $block->getTestimonials();
+/*
+ * @var $block AudereCommerce\Testimonial\Block\Testimonials
+ */
+?>
+
+<div class="fullwidth testimonials">
+    <div class="page-main section">
+        <div class="quote-icon"></div>
+        <div class="swiper-container testimonials-slider-container">
+            <ul class="swiper-wrapper">
+                <?php foreach ($testimonialCollection as $_testimonial): ?>
+                    <li class="swiper-slide testimonial">
+                        <div class="quote"><?php echo $_testimonial->getTestimonial(); ?></div>
+                        <div class="user">
+                            <img src="<?php echo $block->getTestimonialImage($_testimonial); ?>"/>
+                            <div class="details">
+                                <div class="name"><?php echo $_testimonial->getName(); ?></div>
+                                <div class="company"><?php echo $_testimonial->getCompany(); ?></div>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="testimonials-slider-pagination"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery', 'js/library/slider'], function ($, slider) {
+        var testimonials = new Swiper('.testimonials-slider-container', {
+            roundLengths: true,
+            pagination: '.testimonials-slider-pagination',
+            paginationClickable: true,
+            shortSwipes: true,
+            preventClicksPropagation: false,
+            preventClicks: false,
+            autoHeight: false
+        });
+    });
+</script>

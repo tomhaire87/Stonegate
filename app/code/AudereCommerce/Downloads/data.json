@@ -1,0 +1,159 @@
+{
+  "namespace": "AudereCommerce",
+  "module": "Downloads",
+  "models": {
+    "download_type": {
+      "name": "Download\\Type",
+      "comment": "Download Type",
+      "generate_schema": true,
+      "generate_models": true,
+      "columns": {
+        "name": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Name"
+        },
+        "image": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Image"
+        },
+        "created_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT",
+          "comment": "Created At"
+        },
+        "updated_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE",
+          "comment": "Updated At"
+        }
+      }
+    },
+    "download_group": {
+      "name": "Download\\Group",
+      "comment": "Download Group",
+      "generate_schema": true,
+      "generate_models": true,
+      "columns": {
+        "name": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Name"
+        },
+        "url_key": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "URL Key"
+        },
+        "created_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT",
+          "comment": "Created At"
+        },
+        "updated_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE",
+          "comment": "Updated At"
+        }
+      }
+    },
+    "download": {
+      "name": "Download",
+      "comment": "Download",
+      "generate_schema": true,
+      "generate_models": true,
+      "columns": {
+        "name": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Name"
+        },
+        "type_id": {
+          "datatype": "int",
+          "unsigned": "true",
+          "nullable": false,
+          "comment": "Type"
+        },
+        "group_id": {
+          "datatype": "int",
+          "unsigned": "true",
+          "nullable": false,
+          "comment": "Group"
+        },
+        "path": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "File Path"
+        },
+        "active": {
+          "datatype": "int",
+          "length": 1,
+          "default": 0,
+          "nullable": false,
+          "comment": "Active"
+        },
+        "created_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT",
+          "comment": "Created At"
+        },
+        "updated_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE",
+          "comment": "Updated At"
+        }
+      },
+      "foreign_keys": [
+        {
+          "type": "one-many",
+          "column": "type_id",
+          "getter_function": "getType",
+          "target_getter_function": "getDownloads",
+          "target_namespace": "AudereCommerce",
+          "target_module": "Downloads",
+          "target_name": "Download\\Type",
+          "target_table": "auderecommerce_downloads_download_type",
+          "target_column": "id",
+          "on_delete": "ACTION_NO_ACTION"
+        },
+        {
+          "type": "one-many",
+          "column": "group_id",
+          "getter_function": "getGroup",
+          "target_getter_function": "getDownloads",
+          "target_namespace": "AudereCommerce",
+          "target_module": "Downloads",
+          "target_name": "Download\\Group",
+          "target_table": "auderecommerce_downloads_download_group",
+          "target_column": "id",
+          "on_delete": "ACTION_NO_ACTION"
+        },
+        {
+          "type": "many-many",
+          "column": "id",
+          "getter_function": "getProducts",
+          "target_namespace": "Magento",
+          "target_module": "Catalog",
+          "target_name": "Product",
+          "target_table": "catalog_product_entity",
+          "target_column": "entity_id",
+          "relation_table": "auderecommerce_downloads_download_product",
+          "on_delete": "ACTION_NO_ACTION"
+        }
+      ]
+    }
+  }
+}

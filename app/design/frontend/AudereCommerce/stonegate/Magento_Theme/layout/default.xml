@@ -1,0 +1,79 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/swiper.min.css" />
+    </head>
+    <body>
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="form.subscribe" remove="true" />
+        <referenceBlock name="copyright" remove="true" />
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        <referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceContainer name="header.panel.wrapper" remove="true"/>
+		<referenceBlock name="header.bar.wishlist" remove="true" />
+        <move element="minicart" destination="header.right" after="header.store.info"/>
+        <move element="top.search" destination="header.right" before="header.store.info"/>
+        <move element="navigation.sections" destination="header.navigation"/>
+        <move element="breadcrumbs" destination="title.bar.content" />
+        <move element="page.main.title" destination="title.bar.content" after="breadcrumbs" />
+        <move element="logo" destination="logo.container" />
+        <!-- <referenceBlock name="catalog.topnav">
+            <block class="AudereCommerce\Stonegate\Block\StoreInfo" name="menu.telephone" template="Stonegate_Base::html/header/menu/telephone.phtml" />
+        </referenceBlock> -->
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                <argument name="logo_img_width" xsi:type="number">264</argument>
+                <argument name="logo_img_height" xsi:type="number">73</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header.container">
+            <container name="header.bar" htmlTag="div" htmlClass="headerbar" before="header-wrapper">
+                <container name="header.bar.inner" htmlTag="div" htmlClass="page-main">
+                    <container name="header.bar.left" htmlTag="div" htmlClass="headerbar-right">
+                        <block class="Magento\Directory\Block\Currency" name="currency" template="Magento_Directory::currency.phtml" />
+						<block class="Magento\Framework\View\Element\Template" name="social.links.header" template="Stonegate_Base::html/common/social-links.phtml"/>
+                    </container>
+                    <!-- <container name="header.bar.right" htmlTag="div" htmlClass="headerbar-right">
+                        <block class="Magento\Framework\View\Element\Template" name="header.bar.wishlist" template="Stonegate_Base::html/header/headerbar/wishlist.phtml" after="top.search" />
+                    </container> -->
+                </container>
+            </container>
+            <block class="AudereCommerce\Stonegate\Block\Headerbar" name="trade.account.bar" template="Stonegate_Base::html/header/trade-account.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+			<container name="header.top.container" htmlTag="div" htmlClass="header-top-container">
+				<container name="logo.container" htmlTag="div" htmlClass="logo-container" />
+				<container name="header.right" htmlTag="div" htmlClass="header-right" after="logo.container">
+					<container name="header.store.info" htmlTag="div" htmlClass="header-store-info">
+						<container name="header.bar.inner.right" htmlTag="div" htmlClass="inner-right-wrapper">
+							<block class="AudereCommerce\Stonegate\Block\StoreInfo" name="header.contact.details" template="Stonegate_Base::html/header/contact-details.phtml"/>
+							<block class="AudereCommerce\Stonegate\Block\Headerbar" name="account.links" template="Stonegate_Base::html/header/headerbar/account-links.phtml" cacheable="false" />
+						</container>
+					</container>
+				</container>
+			</container>
+			<container name="header.navigation" htmlTag="div" htmlClass="header-navigation" after="header.right" />
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="header.js" template="Stonegate_Base::html/header/js.phtml" after="header.container" />
+            <block class="Magento\Framework\View\Element\Template" name="header.panel.bar" template="Stonegate_Base::html/header/panel-bar.phtml" after="header.js" />
+            <container name="title.bar" htmlTag="div" htmlClass="breadcrumb-title" after="header.panel.bar">
+                <container name="title.bar.content" htmlTag="div" htmlClass="page-main"></container>
+            </container>
+			<block class="Magento\Framework\View\Element\Template" name="copyright.notice" template="Stonegate_Base::html/footer/copyright.phtml" after="footer-container" />
+        </referenceContainer>
+		<referenceContainer name="footer-container">
+			<block class="Magento\Framework\View\Element\Template" name="footer.panel.bar" template="Stonegate_Base::html/footer/panel-bar.phtml" before="-" />
+		</referenceContainer>
+        <referenceContainer name="footer">
+            <container name="footer.contact.wrapper" htmlTag="div" htmlClass="col col-l contact-us">
+                <block class="AudereCommerce\Stonegate\Block\StoreInfo" name="footer.contact.details" template="Stonegate_Base::html/common/contact-details.phtml">
+					<block class="Magento\Framework\View\Element\Template" name="social.links.footer" template="Stonegate_Base::html/common/social-links.phtml"/>
+				</block>
+            </container>
+            <block class="AudereCommerce\Stonegate\Block\Categories" name="footer.links" template="Stonegate_Base::html/footer/links.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="2columns-left" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="title.wrapper" />
+        <move element="product.info.addto" destination="title.wrapper" after="page.main.title" />
+        <move element="product.info.overview" destination="product.info.main" after="product.info.price" />
+        <move element="product.info.addtocart" destination="product.info.form.content" after="grouped.product.details" />
+        <move element="product.info.price" destination="product.info.main" after="product.availability" />
+        <referenceContainer name="product.info.social" remove="true" />
+        <referenceContainer name="product.info.stock.sku" remove="true" />
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        <referenceContainer name="product.info.main">
+            <container name="title.wrapper" htmlTag="div" htmlClass="title-wrapper" before="product.info.price"></container>
+            <block class="Magento\Catalog\Block\Product\View" name="product.availability" template="Magento_Catalog::product/view/availability.phtml" after="title.wrapper" />
+            <block class="Magento\Catalog\Block\Product\View" name="fabricators.tip" template="Magento_Catalog::product/view/fabricators-tip.phtml" after="product.info" />
+        </referenceContainer>
+        <referenceContainer name="product.info.media">
+            <block class="Magento\Catalog\Block\Product\View" name="product.accreditations" template="Magento_Catalog::product/view/accreditations.phtml" before="product.info.media.image" />
+            <block class="Magento\Catalog\Block\Product\View" name="delivery.countdown" template="Magento_Catalog::product/view/deliverycountdown.phtml" />
+            <block class="Magento\Catalog\Block\Product\View" name="banner.blocks" template="Magento_Catalog::product/view/banners.phtml" />
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Theme\Block\Html\Topmenu" name="left.categories" template="Magento_Catalog::product/view/navigation/left.phtml" />
+        </referenceContainer>
+    </body>
+</page>

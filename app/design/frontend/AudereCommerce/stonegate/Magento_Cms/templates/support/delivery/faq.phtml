@@ -1,0 +1,91 @@
+<h3 class="title">Delivery & Returns - Frequently Asked Questions</h3>
+<div class="faq-container">
+    <div class="faq">
+        <div class="question">
+            <h5>Can I order my delivery to another site or address?</h5>
+        </div>
+        <div class="answer">
+            <p>Yes. In the checkout, you can specify a different address or if you’re a trade customer you can manage your address in your account.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>What happens if I am out when my courier comes and I miss the delivery?</h5>
+        </div>
+        <div class="answer">
+            <p>If you miss your order you can arrange collection or delivery directly with the courier. Speak to a member of our Customer Care team if you need help with collecting your package.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>I have not received my item…</h5>
+        </div>
+        <div class="answer">
+            <p>In the unlikely event that you do not receive your item within the designated time, please speak with a member of the team so we can liaise with the courier.</p>
+            <p>You can speak to a member of our team on either +44 (0) 1482 620400, or email <a href="mailto:info@stonegatetooling.co.uk">info@stonegatetooling.co.uk</a> and we can contact the courier on your behalf.</p>
+            <p>Our Customer Care team are available 07:00 – 16:30, Monday to Friday.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>Can I amend or cancel my order?</h5>
+        </div>
+        <div class="answer">
+            <p>In the unlikely event that you do need to cancel or amend your order, speak with us immediately so we can ensure it isn’t dispatched. We hold excellent stock levels so most orders are picked and dispatched within minutes or receiving them.</p>
+            <p>You can speak to a member of our team on either +44 (0) 1482 620400, or email <a href="mailto:info@stonegatetooling.co.uk">info@stonegatetooling.co.uk</a> and we can contact the courier on your behalf.</p>
+            <p>Our Customer Care team are available 07:00 – 16:30, Monday to Friday.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>When will I receive confirmation of the order?</h5>
+        </div>
+        <div class="answer">
+            <p>When ordering online you will receive an email confirmation and receipt once the order has been placed.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>Are there any products which aren’t included in the delivery options?</h5>
+        </div>
+        <div class="answer">
+            <p>All our products can be shipped directly to you, some larger items or orders will need to be dispatched via our pallet network.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>Can I get delivery to outside the UK?</h5>
+        </div>
+        <div class="answer">
+            <p>Yes. Please speak with a member of the team before ordering so we can ensure the order goes through.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>Can I upgrade my delivery service once the order has been dispatched?</h5>
+        </div>
+        <div class="answer">
+            <p>Unfortunately not, once an order has been dispatched you can’t change the delivery service you originally choose.</p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h5>What if the goods arrive damaged?</h5>
+        </div>
+        <div class="answer">
+            <p>No need to worry – if an item or the order is damaged in transit, speak with our Customer Care team on +44 (0) 1482 620400 who are available Monday – Friday 07:00-16:30.</p>
+            <p>In most cases, we will need to collect the damaged items for quality control purposes.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery'], function($) {
+        $('.faq-container .faq').click(function() {
+            if (!$(this).hasClass('active')) {
+                $('.faq .answer').stop().slideUp(150);
+                $('.faq').removeClass('active');
+                $(this).addClass('active').find('.answer').stop().slideDown(150);
+            }
+        });
+    });
+</script>

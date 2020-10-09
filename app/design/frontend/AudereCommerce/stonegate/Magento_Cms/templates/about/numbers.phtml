@@ -1,0 +1,36 @@
+<div class="fullwidth numbers">
+    <div class="page-main section">
+        <h2 class="title">Stonegate in Numbers</h2>
+        <div class="description">Don’t just take our word for it, have a look for yourself how our business performs and excels in delivering excellence for our valued customers.</div>
+        <div class="column-container colspan-4">
+            <div class="column">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <div class="number">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('number_happy_customers')->toHtml(); ?>
+                </div>
+                <div class="text">Happy customers</div>
+            </div>
+            <div class="column">
+                <i class="fa fa-barcode" aria-hidden="true"></i>
+                <div class="number">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('number_products')->toHtml(); ?>
+                </div>
+                <div class="text">Products in stock</div>
+            </div>
+            <div class="column">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <div class="number">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('number_years_business')->toHtml(); ?>
+                </div>
+                <div class="text">Years in business</div>
+            </div>
+            <div class="column">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                <div class="number">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('number_deliveries')->toHtml(); ?>
+                </div>
+                <div class="text">Next day deliveries in <?php echo date("Y",strtotime("-1 year")); ?></div>
+            </div>
+        </div>
+    </div>
+</div>

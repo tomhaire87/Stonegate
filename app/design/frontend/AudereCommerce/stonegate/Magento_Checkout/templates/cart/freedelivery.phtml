@@ -1,0 +1,10 @@
+<?php
+$freeShipping = $block->getFreeShippingRate();
+$cartTotal = $block->getCartTotal();
+$number = $freeShipping - $cartTotal;
+?>
+<?php if ($cartTotal >= $freeShipping): ?>
+    <span>Your order qualifies for free delivery!</span>
+<?php else: ?>
+    <span>Spend another <?php echo $block->getCurrentCurrencySymbol(); ?><?php echo number_format($number, 2, '.', ''); ?> to qualify for free standard delivery on your order!</span>
+<?php endif; ?>

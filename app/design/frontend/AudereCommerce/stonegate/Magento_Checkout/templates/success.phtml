@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/** @var $block \Magento\Checkout\Block\Onepage\Success */
+$order = $block->getRealOrderId();
+?>
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */ echo __('Thank You. Your Order has been Received') ?></span>
+    </h1>
+</div>
+<div class="checkout-success">
+    <h3 class="title"><?php /* @escapeNotVerified */ echo __('Thank you for your purchase. Your order number is') ?> <a href="<?php echo $block->getViewOrderUrl() ?>"><?php echo $block->getOrderId() ?></a></h3>
+    <p><?php /* @escapeNotVerified */ echo __('You will receive an order confirmation email shortly.') ?></p>
+    <p>Click <?php echo $this->getLayout()->createBlock('Magento\Checkout\Block\Onepage\Success')->setTemplate('Magento_Checkout::button.phtml')->toHtml(); ?> to print a copy of your order confirmation.</p>
+
+    <?php echo $block->getAdditionalInfoHtml() ?>
+
+    <div class="divider"></div>
+</div>

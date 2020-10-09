@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="affinity_zynk">
+		<job name="affinity_zynk_import_orders" instance="Affinity\Zynk\Cron\Import\Orders" method="run">
+			<schedule>0 * * * *</schedule>
+		</job>
+	</group>
+</config>

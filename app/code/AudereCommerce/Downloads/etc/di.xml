@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="AudereCommerce\Downloads\Api\DownloadManagementInterface" type="AudereCommerce\Downloads\Model\DownloadManagement" />
+    <preference for="AudereCommerce\Downloads\Api\Download\TypeManagementInterface" type="AudereCommerce\Downloads\Model\Download\TypeManagement" />
+    <preference for="AudereCommerce\Downloads\Api\Download\TypeRepositoryInterface" type="AudereCommerce\Downloads\Model\Download\TypeRepository" />
+    <preference for="AudereCommerce\Downloads\Api\DownloadRepositoryInterface" type="AudereCommerce\Downloads\Model\DownloadRepository" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="downloads_downloadtype_listing_data_source" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download\Type\Grid\Collection</item>
+                <item name="downloads_downloadgroup_listing_data_source" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download\Group\Grid\Collection</item>
+                <item name="downloads_download_listing_data_source" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\Downloads\Ui\DataProvider\Download\Type\Form\Download\TypeDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">AudereCommerce\Downloads\Ui\DataProvider\Download\Type\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <virtualType name="AudereCommerce\Downloads\Ui\DataProvider\Download\Type\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="class" xsi:type="string">AudereCommerce\Downloads\Ui\DataProvider\Download\Type\Form\Modifier\General</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AudereCommerce\Downloads\Download\TypeImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">downloads/tmp/download/type</argument>
+            <argument name="basePath" xsi:type="string">downloads/download/type</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="AudereCommerce\Downloads\Controller\Adminhtml\DownloadType\ImageUpload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">AudereCommerce\Downloads\Download\TypeImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\Downloads\Ui\DataProvider\Download\Form\DownloadDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">AudereCommerce\Downloads\Ui\DataProvider\Download\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <virtualType name="AudereCommerce\Downloads\Ui\DataProvider\Download\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="class" xsi:type="string">AudereCommerce\Downloads\Ui\DataProvider\Download\Form\Modifier\General</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="AudereCommerce\Downloads\Api\Download\GroupManagementInterface" type="AudereCommerce\Downloads\Model\Download\GroupManagement" />
+    <preference for="AudereCommerce\Downloads\Api\Download\GroupRepositoryInterface" type="AudereCommerce\Downloads\Model\Download\GroupRepository" />
+    <type name="AudereCommerce\Downloads\Controller\Adminhtml\Download\FileUpload">
+        <arguments>
+            <argument name="fileUploader" xsi:type="object">AudereCommerce\Downloads\DownloadFileUpload</argument>
+        </arguments>
+    </type>
+    <virtualType name="AudereCommerce\Downloads\DownloadFileUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">downloads/download</argument>
+            <argument name="basePath" xsi:type="string">downloads/download</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="pdf" xsi:type="string">pdf</item>
+                <item name="xls" xsi:type="string">xls</item>
+                <item name="xlsx" xsi:type="string">xlsx</item>
+                <item name="rtf" xsi:type="string">rtf</item>
+                <item name="pub" xsi:type="string">pub</item>
+                <item name="ppt" xsi:type="string">ppt</item>
+                <item name="pptx" xsi:type="string">pptx</item>
+                <item name="doc" xsi:type="string">doc</item>
+                <item name="docx" xsi:type="string">docx</item>
+                <item name="zip" xsi:type="string">zip</item>
+                <item name="rar" xsi:type="string">rar</item>
+                <item name="tar" xsi:type="string">tar</item>
+                <item name="7z" xsi:type="string">7z</item>
+                <item name="csv" xsi:type="string">csv</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="AudereCommerce\Downloads\Ui\DataProvider\Download\Group\Form\Download\GroupDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">AudereCommerce\Downloads\Ui\DataProvider\Download\Group\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <virtualType name="AudereCommerce\Downloads\Ui\DataProvider\Download\Group\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="class" xsi:type="string">AudereCommerce\Downloads\Ui\DataProvider\Download\Group\Form\Modifier\General</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="AudereCommerce\Downloads\Model\ResourceModel\Download\Type\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">auderecommerce_downloads_download_type</argument>
+            <argument name="eventPrefix" xsi:type="string">download_type_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">download_type_collection</argument>
+            <argument name="resourceModel" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download\Type</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\Downloads\Model\ResourceModel\Download\Group\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">auderecommerce_downloads_download_group</argument>
+            <argument name="eventPrefix" xsi:type="string">download_group_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">download_group_collection</argument>
+            <argument name="resourceModel" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download\Group</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\Downloads\Model\ResourceModel\Download\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">auderecommerce_downloads_download</argument>
+            <argument name="eventPrefix" xsi:type="string">download_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">download_collection</argument>
+            <argument name="resourceModel" xsi:type="string">AudereCommerce\Downloads\Model\ResourceModel\Download</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Affinity\Stonegate\Block\Widget\HomepagePromo $this
+ */
+?>
+<?php $imageUrl	= $this->getImageUrl() ?>
+<?php if(!is_null($imageUrl)) : ?>
+	<?php
+	$title		= $this->escapeHtml($this->getTitle());
+	$buttonText	= $this->escapeHtml($this->getButtonText());
+	$flagText	= $this->escapeHtml($this->getFlagText());
+	$url		= $this->escapeUrl($this->getBlockUrl());
+	?>
+	<div class="featured-block">
+		<?php if(!is_null($url)) ?><a href="<?php echo $url ?>" alt="<?php echo $title ?>" title="<?php echo $title ?>">
+			<img src="<?php echo $imageUrl ?>" alt="<?php echo $title ?>">
+			<div class="content-container">
+				<?php if($flagText) : ?>
+					<div class="flag"><?php echo $flagText ?></div>
+				<?php endif ?>
+				<div class="inner-content">
+					<div class="title"><?php echo $title ?></div>
+					<?php if($buttonText) : ?>
+						<div class="button"><?php echo $buttonText ?></div>
+					<?php endif ?>
+				</div>
+			</div>
+		<?php if(!is_null($url)) ?></a>
+	</div>
+<?php endif ?>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="category.image" remove="true" />
+        <referenceContainer name="category.view.container">
+            <block class="Magento\Framework\View\Element\Template" name="category.title.wrapper" template="Magento_Catalog::product/category/title-wrapper.phtml" before="category.description" />
+            <block class="Magento\Framework\View\Element\Template" name="category.image.action" template="Magento_Catalog::product/category/image.phtml" after="category.description" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="AudereCommerce\Stonegate\Block\Product\Category\View" name="category.list" template="Magento_Catalog::product/category/list.phtml" before="-" />
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <container name="stonegate.additional.wrapper" htmlTag="div" htmlClass="child-category-hide fullwidth" after="main.content">
+                <block class="AudereCommerce\BrandManager\Block\Brands" name="brands"
+                       template="AudereCommerce_BrandManager::slider.phtml"/>
+                <block class="AudereCommerce\Testimonial\Block\Testimonials" name="testimonials"
+                       template="AudereCommerce_Testimonial::testimonials.phtml"/>
+                <container name="stonegate.container" htmlTag="div" htmlClass="page-main" after="testimonials">
+                    <container name="stonegate.wrapper" htmlTag="div"
+                               htmlClass="column-container colspan-2 info-columns section">
+                        <container name="about.wrapper" htmlTag="div" htmlClass="column">
+                            <block class="Magento\Framework\View\Element\Template" name="about.stonegate"
+                                   template="Stonegate_Base::content/common/about.phtml"/>
+                        </container>
+                        <container name="newsletter.wrapper" htmlTag="div" htmlClass="column">
+                            <block class="Magento\Newsletter\Block\Subscribe" name="additional.newsletter.content"
+                                   template="Magento_Newsletter::subscribe.phtml"/>
+                        </container>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

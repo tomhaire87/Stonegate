@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Request Catalogue</title>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">The Diamond Book</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="catalogue.banner" template="AudereCommerce_CatalogueRequest::banner.phtml" before="main.content" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="request.catalogue" template="AudereCommerce_CatalogueRequest::requestcatalogue.phtml" />
+        </referenceContainer>
+    </body>
+</page>

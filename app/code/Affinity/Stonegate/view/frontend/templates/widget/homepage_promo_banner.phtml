@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Affinity\Stonegate\Block\Widget\HomepagePromoBanner $this
+ */
+?>
+<?php
+$title		= $this->escapeHtml(html_entity_decode($this->getTitle()), ['strong']);
+$buttonText	= $this->escapeHtml($this->getButtonText());
+$url		= $this->escapeUrl($this->getButtonUrl());
+?>
+<?php if($title) : ?>
+	<div class="promo-banner-container">
+		<<?php echo ($url) ? 'a href="' . $url . '"' : 'div' ?> class="banner-inner-content">
+			<div class="row">
+				<div class="col">
+					<div class="title">
+						<?php echo $title ?>
+					</div>
+				</div>
+				<?php if($buttonText) : ?>
+					<div class="col margin-auto">
+						<div class="button">
+							<?php echo $buttonText ?>
+						</div>
+					</div>
+				<?php endif ?>
+			</div>
+		<?php echo ($url) ? '</a>' : '</div>' ?>
+	</div>
+<?php endif ?>

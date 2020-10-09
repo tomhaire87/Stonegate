@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.order.actions.gift_options" remove="true"/>
+        <move element="cart.summary" destination="cart.summary.wrapper" />
+        <referenceContainer name="checkout.cart.container">
+            <block class="Magento\Framework\View\Element\Template" name="top.actions" template="Magento_Checkout::cart/top-actions.phtml" />
+            <container name="cart.summary.wrapper" htmlTag="div" htmlClass="summary-wrapper" after="checkout.cart.form"></container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="banner.ads" template="Stonegate_Base::content/common/banners/small-ads-wide.phtml" before="banner-wrapper" />
+            <container name="banner-wrapper" htmlTag="div" htmlClass="wide-banner" after="-">
+                <block class="Magento\Framework\View\Element\Template" name="wide.banner.content" template="Magento_Checkout::cart/bannerwide.phtml" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

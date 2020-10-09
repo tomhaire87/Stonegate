@@ -1,0 +1,15 @@
+<?php /* @var $block AudereCommerce\CatalogueRequest\Block\Email */ ?>
+
+<?php foreach ($block->getDownloadGroupedParams() as $group => $values): ?>
+    <div class="group">
+        <h2 class="heading">Catalogue Download</h2>
+        <div class="content">
+            <?php foreach ($values as $label => $value): ?>
+                <div style="margin-bottom: 4px;">
+                    <span style="font-weight: 600; display: inline-block; margin-right: 4px;" class="label"><?php echo $label; ?>:</span>
+                    <span class="value"><?php echo $value; ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endforeach; ?>

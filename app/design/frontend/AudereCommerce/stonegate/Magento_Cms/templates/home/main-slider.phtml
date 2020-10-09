@@ -1,0 +1,57 @@
+<?php
+/* @var $block AudereCommerce\SlideManager\Block\Slider */
+$slideCollection = $block->getSlides();
+?>
+
+<div class="main-slider-container swiper-container">
+    <ul class="swiper-wrapper slides">
+        <?php foreach ($slideCollection as $_slide): ?>
+            <li class="swiper-slide">
+                <img src="<?php echo $block->getMediaUrl() . 'slidemanager/images' . $_slide->getImage(); ?>" class="base-image" />
+                <img src="<?php echo $block->getMediaUrl() . 'slidemanager/images' . $_slide->getSmallImage(); ?>" class="small-image" />
+                <div class="outer-wrapper flex-center">
+                    <div class="page-main">
+                        <div class="text-container">
+                            <?php if ($_slide->getSubtitlePosition() === 'before' || $_slide->getSubtitlePosition() === ''): ?>
+                                <h3 class="subtitle" style="color: <?php echo $_slide->getSubtitleColour(); ?>"><?php echo $_slide->getSubtitle(); ?></h3>
+                            <?php endif; ?>
+                            <h1 class="title" style="color: <?php echo $_slide->getTitleColour(); ?>"><?php echo $_slide->getTitle(); ?></h1>
+                            <?php if ($_slide->getSubtitlePosition() === 'after'): ?>
+                                <h3 class="subtitle" style="color: <?php echo $_slide->getSubtitleColour(); ?>"><?php echo $this->getSubtitle(); ?></h3>
+                            <?php endif; ?>
+                            <div class="description">
+                                <span><?php echo $_slide->getContent(); ?></span>
+                            </div>
+                            <a href="<?php echo $_slide->getLink(); ?>" class="action primary" style="color: <?php echo $_slide->getButtonTextColour(); ?>; background-color: <?php echo $_slide->getButtonBackgroundColour(); ?>">
+                                <span><?php echo $_slide->getButtonText(); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="swiper-pagination main-slider-pagination"></div>
+    <div class="slider-controls fullwidth">
+        <div class="main-slider-left control"></div>
+        <div class="main-slider-right control"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery', 'js/library/slider'], function ($, slider) {
+        var mainSlider = new Swiper('.main-slider-container', {
+            prevButton: '.main-slider-left',
+            nextButton: '.main-slider-right',
+            roundLengths: true,
+            pagination: '.main-slider-pagination',
+            paginationClickable: true,
+            shortSwipes: true,
+            preventClicksPropagation: false,
+            preventClicks: false,
+            autoHeight: true,
+            speed: 600,
+            autoplay: 6500,
+			loop: true
+        });
+    });
+</script>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="cataloguerequest_request_email_template" label="Catalogue Request" file="request.html" type="html" module="AudereCommerce_CatalogueRequest" area="frontend" />
+    <template id="cataloguerequest_download_email_template" label="Catalogue Download" file="download.html" type="html" module="AudereCommerce_CatalogueRequest" area="frontend" />
+</config>

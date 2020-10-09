@@ -1,0 +1,16 @@
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */ echo __('Customer Service') ?></span>
+    </h1>
+</div>
+<div class="content">
+    <h3 class="title">Our promise to you...</h3>
+    <strong class="highlight">Being in business is tough enough - Stonegate is here to make your life easier.</strong>
+    <div class="masonry">
+        <img src="<?php echo $this->getViewFileUrl('images/cms/support/customerservice/large.jpg'); ?>" />
+        <img src="<?php echo $this->getViewFileUrl('images/cms/support/customerservice/small-1.jpg'); ?>" class="small" />
+        <img src="<?php echo $this->getViewFileUrl('images/cms/support/customerservice/small-2.jpg'); ?>" class="small"/>
+    </div>
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('customer_service_content')->toHtml(); ?>
+</div>
+<?php echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Stonegate_Base::content/common/banners/small-ads-tall.phtml')->toHtml(); ?>

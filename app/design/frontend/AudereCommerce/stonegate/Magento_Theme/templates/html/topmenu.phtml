@@ -1,0 +1,153 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top mega-menu-wrapper', 'submenu mega-menu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"delay": 60, "responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @escapeNotVerified */ $_menu ?>
+        <li class="resource-menu-container level0 nav-1 category-item first level-top mega-menu-wrapper parent ui-menu-item">
+            <a href="<?php echo $this->getUrl() ?>#" class="level-top resources-menu submenu-link"
+               role="menuitem"><span><?= /* @escapeNotVerified */ __('Resources') ?></span></a>
+            <ul class="level0 submenu resource-menu" role="menu" aria-expanded="false" aria-expanded="false">
+				<div class="nav-title">
+					<?= /* @escapeNotVerified */ __('Resources') ?>
+				</div>
+				<div class="nav-contents">
+					<div class="nav-container">
+						<div class="nav-left">
+							<div class="ul">
+								<div class="li">
+									<a href="<?php echo $this->getUrl('news') ?>"><span><?= /* @escapeNotVerified */ __('Our Blog') ?></span></a>
+								</div>
+								<div class="li">
+									<a href="<?php echo $this->getUrl('brands') ?>"><span><?= /* @escapeNotVerified */ __('Brands') ?></span></a>
+								</div>
+								<div class="li">
+									<a href="<?php echo $this->getUrl('about-us') ?>"><span><?= /* @escapeNotVerified */ __('About Us') ?></span></a>
+								</div>
+								<div class="li">
+									<a href="<?php echo $this->getUrl('our-team') ?>"><span><?= /* @escapeNotVerified */ __('Our Team') ?></span></a>
+								</div>
+								<div class="li">
+									<a href="<?php echo $this->getUrl('faq') ?>"><span><?= /* @escapeNotVerified */ __('FAQs') ?></span></a>
+								</div>
+							</div>
+						</div>
+						<div class="nav-right">
+							<a href="<?php echo $this->getUrl('stone-tool-clearance.html') ?>" class="clearance-container">
+								<div class="clearance-title"><?php echo __('Great detals on clearance products') ?></div>
+								<div class="clearance-sub-title"><?php echo __('Limited stock available') ?></div>
+								<div class="clearance-text"><?php echo __('Don\'t miss out') ?></div>
+								<div class="clearance-link"><span><?php echo __('Shop Now') ?></span> <img src="<?php echo $block->getViewFileUrl('images/icons/arrow-right.svg') ?>" /></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</li>
+    </ul>
+</nav>
+<!--
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"delay": 60, "responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <li class="level0 level-top ui-menu-item home">
+            <a href="<?php echo $this->getBaseUrl(); ?>" class="level-top ui-corner-all"
+               role="menuitem"><span>Home</span></a>
+        </li>
+        <li class="level0 level-top ui-menu-item mega-menu-wrapper">
+            <a href="<?php echo $this->getUrl(); ?>#" class="level-top ui-corner-all products-menu submenu-link"
+               role="menuitem"><span>Shop</span></a>
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all mega-menu" role="menu"
+                aria-expanded="false" aria-expanded="false">
+                <div class="nav-right">
+                    <?php echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Stonegate_Base::content/common/banners/menu-banners.phtml')->toHtml(); ?>
+                </div>
+                <?php /* @escapeNotVerified */
+                echo $_menu; ?>
+                <?php echo $block->getChildHtml('menu.telephone'); ?>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">
+            <a href="<?php echo $this->getUrl('brands'); ?>" class="level-top ui-corner-all" role="menuitem"><span>Our Brands</span></a>
+        </li>
+        <li class="level0 level-top ui-menu-item support">
+            <a href="<?php echo $this->getUrl('support'); ?>" class="level-top ui-corner-all submenu-link" role="menuitem"><span>Support</span></a>
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" aria-expanded="false" aria-expanded="false">
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('faq'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>FAQ</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('customer-service'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Customer Service</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('website-terms-conditions-of-sale'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Terms & Conditions</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('delivery'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Delivery</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('privacy'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Privacy</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">
+            <a href="<?php echo $this->getUrl('about-us'); ?>" class="level-top ui-corner-all submenu-link" role="menuitem"><span>About Us</span></a>
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" aria-expanded="false" aria-expanded="false">
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('about-us'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>About Us</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('our-team'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Our Team</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('news'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>News</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('requestcatalogue'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Get Our Catalogue</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">
+            <a href="<?php echo $this->getUrl('clearance.html'); ?>" class="level-top ui-corner-all highlight"
+               role="menuitem"><span>Clearance</span></a>
+        </li>
+        <li class="level0 level-top ui-menu-item">
+            <a href="<?php echo $this->getUrl('trade-account'); ?>" class="level-top ui-corner-all submenu-link" role="menuitem"><span>Trade Account</span></a>
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" aria-expanded="false" aria-expanded="false">
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('trade-account'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Trade Account</span></a>
+                </li>
+                <li class="level1 ui-menu-item">
+                    <a href="<?php echo $this->getUrl('requesttrade'); ?>" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Apply Now</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">
+            <a href="<?php echo $this->getUrl('contact'); ?>" class="level-top ui-corner-all" role="menuitem"><span>Contact Us</span></a>
+        </li>
+    </ul>
+</nav> -->
+<script type="text/javascript">
+    requirejs(['jquery'], function($) {
+        $('.navigation .submenu-link').click(function() {
+            event.preventDefault();
+        });
+        $('body:not(.cms-index-index) nav.navigation a[href^="' + document.location.href + '"]').parent('.level0').addClass('active');
+        $('.page-layout-support .navigation .level0.support').addClass('active');
+    });
+</script>

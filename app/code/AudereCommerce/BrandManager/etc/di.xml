@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="brandmanager_brand_listing_data_source" xsi:type="string">AudereCommerce\BrandManager\Model\ResourceModel\Brand\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="AudereCommerce\BrandManager\Api\BrandManagementInterface" type="AudereCommerce\BrandManager\Model\BrandManagement" />
+    <preference for="AudereCommerce\BrandManager\Api\BrandRepositoryInterface" type="AudereCommerce\BrandManager\Model\BrandRepository" />
+    <type name="AudereCommerce\BrandManager\Ui\DataProvider\Brand\Form\BrandDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">AudereCommerce\BrandManager\Ui\DataProvider\Brand\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <virtualType name="AudereCommerce\BrandManager\Ui\DataProvider\Brand\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="class" xsi:type="string">AudereCommerce\BrandManager\Ui\DataProvider\Brand\Form\Modifier\General</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AudereCommerce\BrandManager\BrandImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">brandmanager/brand</argument>
+            <argument name="basePath" xsi:type="string">brandmanager/brand</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="AudereCommerce\BrandManager\Controller\Adminhtml\Brand\ImageUpload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">AudereCommerce\BrandManager\BrandImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\BrandManager\Model\ResourceModel\Brand\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">auderecommerce_brandmanager_brand</argument>
+            <argument name="eventPrefix" xsi:type="string">brand_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">brand_collection</argument>
+            <argument name="resourceModel" xsi:type="string">AudereCommerce\BrandManager\Model\ResourceModel\Brand</argument>
+        </arguments>
+    </type>
+</config>

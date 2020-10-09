@@ -1,0 +1,68 @@
+<?php
+/* @var $block AudereCommerce\BrandManager\Block\Brands */
+$brandsCollection = $block->getBrands();
+?>
+
+<div class="fullwidth brands">
+	<div class="page-main section">
+		<h3 class="title">Our Brands</h3>
+	</div>
+    <div class="page-main section relative">
+        <div class="swiper-container brands-slider-container">
+            <ul class="swiper-wrapper">
+                <?php foreach ($brandsCollection as $brand): ?>
+                    <li class="swiper-slide">
+                        <a href="<?php echo $brand->getCategory()->getUrl(); ?>">
+                            <img src="<?php echo $block->getBrandImageUrl($brand); ?>"/>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+		<div class="swiper-pagination brands-slider-pagination"></div>
+		<div class="slider-controls">
+			<div class="brands-slider-left control">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</div>
+			<div class="brands-slider-right control">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</div>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery'], function ($) {
+        requirejs(['jquery', 'js/library/slider'], function ($, slider) {
+            var brandSlider = new Swiper('.brands-slider-container', {
+				pagination: '.brands-slider-pagination',
+                prevButton: '.brands-slider-left',
+                nextButton: '.brands-slider-right',
+				paginationClickable: true,
+                slidesPerView: 6,
+				slidesPerGroup: 6,
+                spaceBetween: 12,
+                roundLengths: true,
+                preventClicksPropagation: false,
+                preventClicks: false,
+                breakpoints: {
+                    1240: {
+                        slidesPerView: 5,
+						slidesPerGroup: 5
+                    },
+                    920: {
+                        slidesPerView: 4,
+						slidesPerGroup: 4
+                    },
+                    768: {
+                        slidesPerView: 3,
+						slidesPerGroup: 3
+                    },
+                    480: {
+                        slidesPerView: 2,
+						slidesPerGroup: 2
+                    }
+                }
+            });
+        });
+    });
+</script>

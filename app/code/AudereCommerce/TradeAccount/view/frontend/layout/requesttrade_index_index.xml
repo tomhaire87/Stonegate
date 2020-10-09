@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <title>Request Catalogue</title>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Trade Account Application</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="AudereCommerce\TradeAccount\Block\Request" name="request.trade.account" template="AudereCommerce_TradeAccount::application.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?php /* @var $block AudereCommerce\Stonegate\Block\Headerbar */ ?>
+
+<?php if ($block->hasAccountCode()): ?>
+    <?php $customer = $block->getCustomer(); ?>
+    <div class="trade-account-bar">
+        <div class="page-main">
+            <div class="title"><?php /* @escapeNotVerified */
+                echo __('Trade Account') ?></div>
+            <span class="welcome-message"><span>Welcome back </span><span class="name"><?php echo $customer->getName(); ?></span><span>!</span></span>
+            <span class="action-text">click <a href="<?php echo $block->getUrl('sales/order/history'); ?>">here</a> to repeat your last order or click <a
+                        href="<?php echo $block->getUrl('customer/account'); ?>">here</a> to visit your account</span>
+        </div>
+    </div>
+<?php endif; ?>

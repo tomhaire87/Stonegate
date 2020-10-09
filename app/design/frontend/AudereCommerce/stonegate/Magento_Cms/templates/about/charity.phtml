@@ -1,0 +1,33 @@
+<?php
+$iframe_string = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('charity_video_embed')->toHtml();
+preg_match('/src="([^"]+)"/', strip_tags($iframe_string, '<iframe>'), $match);
+$url = $match[1];
+?>
+<div class="page-main section charity-community">
+    <div class="column-container colspan-2">
+        <div class="column">
+            <div class="embed-container">
+                <img src="<?php echo $this->getViewFileUrl('images/about/charity.jpg'); ?>" />
+            </div>
+        </div>
+        <div class="column">
+            <h2 class="title">Charity & in the Community</h2>
+            <p>At Stonegate, we’re in business to support our customers, but we are also passionate about helping others. We’re well-aware of our responsibilities and obligations to those in need. Our compassion and desire to help those in need mean we have generously supported numerous charities throughout our time in business. </p>
+            <p>Since our early trading years, we have supported various charities as part of our outreach programmes and direct giving and reflective of the nature and vision of our company, publically benefitting charities are substantially recognised and supported.</p>
+            <div class="subtitle">Donations have been made to many national and worldwide charities, including...</div>
+            <ul class="donations-list">
+                <li class="item"><span>Save the Children</span></li>
+                <li class="item"><span>Help for heroes</span></li>
+                <li class="item"><span>Marie Curie Cancer</span></li>
+                <li class="item"><span>Macmillan</span></li>
+                <li class="item"><span>RNLI</span></li>
+                <li class="item"><span>Oxfam</span></li>
+                <li class="item"><span>Cancer Research</span></li>
+                <li class="item"><span>Barnados</span></li>
+                <li class="item"><span>Rapid Relief Team</span></li>
+                <li class="item"><span>Great Ormond St Trust</span></li>
+            </ul>
+            <p>Stonegate is comitted to ongoing support of those in need.</p>
+        </div>
+    </div>
+</div>

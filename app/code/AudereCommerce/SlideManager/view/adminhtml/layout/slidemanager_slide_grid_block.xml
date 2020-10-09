@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="slidemanager_slide.grid.container">
+            <block class="Magento\Backend\Block\Widget\Grid" name="slidemanager_slide.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">slideGrid</argument>
+                    <argument name="dataSource" xsi:type="object">AudereCommerce\SlideManager\Model\ResourceModel\Slide\Collection</argument>
+                    <argument name="default_sort" xsi:type="string">id</argument>
+                    <argument name="default_dir" xsi:type="string">desc</argument>
+                    <argument name="save_parameters_in_session" xsi:type="boolean">true</argument>
+                    <argument name="use_ajax" xsi:type="boolean">true</argument>
+                    <argument name="grid_url" xsi:type="url" path="*/*/grid">
+                        <param name="_current">1</param>
+                    </argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="slidemanager_slide.grid.columnSet" as="grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">*/*/edit</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="id" xsi:type="string">getId</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="id">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">ID</argument>
+                            <argument name="type" xsi:type="string">number</argument>
+                            <argument name="id" xsi:type="string">id</argument>
+                            <argument name="index" xsi:type="string">slide_id</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="slider">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Slider</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="id" xsi:type="string">slider</argument>
+                            <argument name="index" xsi:type="string">slider_id</argument>
+                            <argument name="options" xsi:type="options" model="AudereCommerce\SlideManager\Model\System\Config\Slider" />
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="identifier">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Identifier</argument>
+                            <argument name="type" xsi:type="string">text</argument>
+                            <argument name="id" xsi:type="string">identifier</argument>
+                            <argument name="index" xsi:type="string">identifier</argument>
+                        </arguments>
+                    </block>
+                    <!-- TODO Add image -->
+                    <!-- TODO Add small_image -->
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="created_at">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Created At</argument>
+                            <argument name="type" xsi:type="string">datetime</argument>
+                            <argument name="id" xsi:type="string">created_at</argument>
+                            <argument name="index" xsi:type="string">created_at</argument>
+                            <argument name="column_css_class" xsi:type="string">col-date</argument>
+                            <argument name="header_css_class" xsi:type="string">col-date</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="updated_at">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Updated At</argument>
+                            <argument name="type" xsi:type="string">datetime</argument>
+                            <argument name="id" xsi:type="string">updated_at</argument>
+                            <argument name="index" xsi:type="string">updated_at</argument>
+                            <argument name="column_css_class" xsi:type="string">col-date</argument>
+                            <argument name="header_css_class" xsi:type="string">col-date</argument>
+                        </arguments>
+                    </block>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

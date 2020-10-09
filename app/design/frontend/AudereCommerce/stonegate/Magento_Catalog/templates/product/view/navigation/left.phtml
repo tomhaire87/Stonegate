@@ -1,0 +1,14 @@
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<ul class="category-nav">
+    <?php /* @escapeNotVerified */ echo $_menu; ?>
+</ul>
+
+<script type="text/javascript">
+    requirejs(['jquery'], function($) {
+        $('.category-nav .level-top.parent').click(function() {
+            $(this).toggleClass('active').children('.submenu').toggleClass('visible');
+        });
+    });
+</script>

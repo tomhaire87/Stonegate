@@ -1,0 +1,58 @@
+<?php
+
+/** @var \Affinity\OfflineOrders\Block\View $block */
+$order		= $block->getOrder();
+$items		= $order->getOrderItems();
+$invoice	= $order->getInvoiceAddress();
+$shipping	= $order->getShippingAddress();
+$addresses	= [
+	'Invoice'	=> $invoice,
+	'Shipping'	=> $shipping
+];
+$currency	= $order->getCurrency();
+?>
+<div class="column-container colspan-2">
+	<?php foreach ($addresses as $label => $address) : ?>
+		<?php if ($address->getId()) : ?>
+			<div class="column">
+				<h3><?php echo __('%1 Address', $label) ?></h3>
+				<address>
+					<?php echo $address->hasCompany()	? $address->getCompany()	. '<br/>' : '' ?>
+					<?php echo $address->hasAddress1()	? $address->getAddress1()	. '<br/>' : '' ?>
+					<?php echo $address->hasAddress2()	? $address->getAddress2()	. '<br/>' : '' ?>
+					<?php echo $address->hasAddress3()	? $address->getAddress3()	. '<br/>' : '' ?>
+					<?php echo $address->hasPostcode()	? $address->getPostcode()	. '<br/>' : '' ?>
+					<?php echo $address->hasEmail()		? $address->getEmail()		. '<br/>' : '' ?>
+				</address>
+			</div>
+		<?php endif ?>
+	<?php endforeach ?>
+</div>
+<hr />
+<table class="order-table">
+	<thead>
+		<tr>
+			<th><?php echo __('SKU') ?></th>
+			<th><?php echo __('Name') ?></th>
+			<th><?php echo __('QTY') ?></th>
+			<th><?php echo __('Unit Price') ?></th>
+			<th><?php echo __('Tax Rate') ?></th>
+			<th><?php echo __('Total Net') ?></th>
+			<th><?php echo __('Total Tax') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($items as $item) : ?>
+			<?php /** @var Affinity\OfflineOrders\Model\OrderItem $item */ ?>
+			<tr>
+				<td><?php echo $item->getSku() ?></td>
+				<td><?php echo $item->getName() ?></td>
+				<td><?php echo $item->getQtyOrdered() ?></td>
+				<td><?php echo $item->getUnitPrice($currency) ?></td>
+				<td><?php echo $item->getTaxRate() ?>%</td>
+				<td><?php echo $item->getTotalNet($currency) ?></td>
+				<td><?php echo $item->getTotalTax($currency) ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

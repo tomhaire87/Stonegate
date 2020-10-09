@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Login / Register</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="small.ads.tall" template="Stonegate_Base::content/common/banners/small-ads-tall.phtml" />
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <container name="bottom.content" htmlTag="div" htmlClass="bottom-content" after="main.content">
+                <container name="stonegate.additional" htmlTag="div" htmlClass="column-container colspan-2 info-columns section page-main">
+                    <container name="about.wrapper" htmlTag="div" htmlClass="column">
+                        <block class="Magento\Framework\View\Element\Template" name="about.stonegate" template="Stonegate_Base::content/common/about.phtml" />
+                    </container>
+                    <container name="newsletter.wrapper" htmlTag="div" htmlClass="column">
+                        <block class="Magento\Newsletter\Block\Subscribe" name="additional.newsletter.content" template="Magento_Newsletter::subscribe.phtml" />
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

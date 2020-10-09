@@ -1,0 +1,12 @@
+{
+    "name": "auderecommerce/stonegate",
+    "description": "Stonegate",
+    "type": "magento2-module",
+    "vesion": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "AudereCommerce\\Stonegate\\": ""
+        },
+        "files": ["registration.php"]
+    }
+}

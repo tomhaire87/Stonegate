@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Our Brands</title>
+        <css src="css/swiper.min.css" />
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Our Brands</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="brands.banner" template="AudereCommerce_BrandManager::banner.phtml" before="main.content" />
+            <container name="stonegate.additional.wrapper" htmlTag="div" htmlClass="fullwidth" after="main.content">
+                <block class="AudereCommerce\Testimonial\Block\Testimonials" name="testimonials" template="AudereCommerce_Testimonial::testimonials.phtml" />
+                <container name="stonegate.container" htmlTag="div" htmlClass="page-main" after="testimonials">
+                    <container name="stonegate.wrapper" htmlTag="div" htmlClass="column-container colspan-2 info-columns section">
+                        <container name="about.wrapper" htmlTag="div" htmlClass="column">
+                            <block class="Magento\Framework\View\Element\Template" name="about.stonegate" template="Stonegate_Base::content/common/about.phtml" />
+                        </container>
+                        <container name="newsletter.wrapper" htmlTag="div" htmlClass="column">
+                            <block class="Magento\Newsletter\Block\Subscribe" name="additional.newsletter.content" template="Magento_Newsletter::subscribe.phtml" />
+                        </container>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="AudereCommerce\BrandManager\Block\Brands" name="our.brands" template="AudereCommerce_BrandManager::brands.phtml" />
+        </referenceContainer>
+    </body>
+</page>

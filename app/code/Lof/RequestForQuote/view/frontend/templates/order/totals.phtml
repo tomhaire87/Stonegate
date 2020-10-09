@@ -1,0 +1,76 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Sales\Block\Order\Totals
+ * @see \Magento\Sales\Block\Order\Totals
+ */
+ 
+$_item = $block->getOrder();
+$grand_total = $_item->getData('grand_total');
+$subtotal = $_item->getData('subtotal');
+$subtotal_with_discount = $_item->getData('subtotal_with_discount');
+$discount = $subtotal - $subtotal_with_discount;
+$qty = $_item->getData('items_qty');
+$tax = ($grand_total - $subtotal_with_discount);
+$rfqHelper                = $this->helper('Lof\RequestForQuote\Helper\Data');
+$enable_price             = $rfqHelper->getConfig("general/enable_price");
+$currentcySymbol          = $rfqHelper->getCurrentCurrencySymbol();
+$currency_code            = $_item?$_item->getQuoteCurrencyCode():null;
+if($enable_price) {
+$shipping_amount = '';
+$totals = $_item->getShippingAddress()->getTotals();
+if(isset($totals['shipping']) && $totals['shipping']){
+    $shipping_amount = $totals['shipping']->getValue();
+}
+$shipping_amount = $shipping_amount?(float)$shipping_amount:'';
+$shipping_note = $_item->getData('shipping_note');
+$shipping_note = $shipping_note?$shipping_note:'';
+?>
+
+<tr class="subtotal">
+    <th colspan="2" scope="row" style="text-align: right">
+        <?php echo __('Sub Total');?>
+    </th>
+    <td  data-th="<?php echo __('Sub Total');?>" align="right">
+        <?php /* @escapeNotVerified */ echo $rfqHelper->formatPrice($subtotal, false, $currency_code); ?>
+    </td>
+</tr>
+<?php if($subtotal != $subtotal_with_discount) { ?>
+<tr class="discount">
+    <th colspan="2" scope="row" style="text-align: right">
+        <?php echo __('Discount');?>
+    </th>
+    <td  data-th="<?php echo __('Discount');?>" align="right">
+        <?php /* @escapeNotVerified */ echo $rfqHelper->formatPrice($discount, false, $currency_code); ?>
+    </td>
+</tr>
+<?php } ?>
+<tr class="tax">
+    <th colspan="2" scope="row" style="text-align: right">
+        <?php echo __('Tax');?>
+    </th>
+    <td  data-th="<?php echo __('Tax');?>" align="right">
+        <?php /* @escapeNotVerified */ echo $rfqHelper->formatPrice($tax, false, $currency_code); ?>
+    </td>
+</tr>
+<?php if($shipping_amount) { ?>
+<tr>
+    <td colspan="2" scope="row" style="text-align: right" align="right"><?php echo __(($totals['shipping'])->getTitle());?></td>
+    <td data-th="<?php echo __('Shipping');?>" align="right"><?php echo $rfqHelper->formatPrice($shipping_amount, false, $currency_code); ?></td>
+</tr>
+<?php } ?>
+<tr class="grand-total">
+    <th colspan="2" scope="row" style="text-align: right">
+        <?php echo __('Grand Total');?>
+    </th>
+    <td  data-th="<?php echo __('Grand Total');?>" align="right">
+        <?php /* @escapeNotVerified */ echo $rfqHelper->formatPrice($grand_total, false, $currency_code); ?>
+    </td>
+</tr>
+<?php } ?>

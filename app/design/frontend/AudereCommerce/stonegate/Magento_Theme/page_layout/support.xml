@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="2columns-left"/>
+    <move element="div.sidebar.main" destination="columns" before="content" />
+    <referenceContainer name="sidebar.additional" remove="true" />
+    <referenceBlock name="page.main.title">
+        <action method="setPageTitle">
+            <argument translate="true" name="title" xsi:type="string">Support</argument>
+        </action>
+    </referenceBlock>
+    <referenceContainer name="sidebar.main">
+        <block class="Magento\Framework\View\Element\Template" name="support.links" template="Magento_Cms::support/links.phtml" />
+    </referenceContainer>
+</layout>

@@ -1,0 +1,7 @@
+<?php
+$html = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home_banners_first')->toHtml();
+?>
+
+<div class="masonry home-first">
+    <?php echo strip_tags($html, '<a><img>'); ?>
+</div>

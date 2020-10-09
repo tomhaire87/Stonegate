@@ -1,0 +1,70 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_QuickOrder
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+// @codingStandardsIgnoreFile
+$storeId                 = null;
+$helperData              = $this->helper(\Mageplaza\QuickOrder\Helper\Data::class);
+$headingBackgroundColor  = $helperData->getHeadingBackgroundColor($storeId);
+$headingTextColor        = $helperData->getHeadingTextColor($storeId);
+$headingBackgroundButton = $helperData->getHeadingBackgroundButton($storeId);
+?>
+<style type="text/css">
+    .headlist-title {
+        background-color: <?php echo $headingBackgroundColor;?>;
+        color: <?php echo $headingTextColor;?>;
+    }
+
+    .addmultiple-title h2 {
+        color: <?php echo $headingTextColor;?>;
+        background-color: <?php echo $headingBackgroundColor;?>;
+    }
+
+    #button-addcart-checkout button {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    .addcart-checkout-list button {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    .addmultiple-addlist button {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    .quickod-wrapper button {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    #item-qty #action-qty #sub-qty {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    #item-qty #action-qty #plus-qty {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    #duplicate-item {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+
+    #delete-item {
+        background-color: <?php echo $headingBackgroundButton;?>;
+    }
+</style>

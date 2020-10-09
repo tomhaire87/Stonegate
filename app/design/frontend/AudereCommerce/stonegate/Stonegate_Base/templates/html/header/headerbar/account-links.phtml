@@ -1,0 +1,23 @@
+<?php /* @var $this AudereCommerce\Stonegate\Block\Headerbar */ ?>
+
+<?php $session = $this->getSession(); ?>
+
+<?php if ($session->isLoggedIn()): ?>
+    <div class="item">
+        <a class="show" href="<?php echo $this->getUrl('customer/account') ?>">
+			<div class="icon">
+            	<i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+			</div>
+            <div class="text"><?php echo __('Account') ?></div>
+		</a>
+    </div>
+<?php else: ?>
+    <div class="item">
+        <a class="show" href="<?php echo $this->getUrl('customer/account/login'); ?>">
+			<div class="icon">
+            	<i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+			</div>
+            <div class="text"><?php echo __('Account') ?></div>
+        </a>
+    </div>
+<?php endif; ?>

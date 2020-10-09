@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="main.content" destination="page.wrapper" before="footer-container" />
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceContainer name="page.wrapper">
+            <block class="AudereCommerce\SlideManager\Block\Slider" name="main.slider" template="Magento_Cms::home/main-slider.phtml">
+                <arguments>
+                    <argument name="location" xsi:type="string">homepage</argument>
+                </arguments>
+            </block>
+            <!-- <container name="shop.products.wrapper" htmlTag="div" htmlClass="page-main shop-products-container">
+                <container name="shop.products" htmlTag="div" htmlClass="content">
+                    <block class="Magento\Framework\View\Element\Template" name="home.banners.first" template="Magento_Cms::home/banners-first.phtml" />
+                    <block class="AudereCommerce\Stonegate\Block\Product\Featured" name="featured.products" template="Magento_Cms::home/featured.phtml" />
+                </container>
+                <block class="AudereCommerce\Stonegate\Block\Categories" name="category.list" template="Magento_Cms::home/categories.phtml" />
+            </container> -->
+            <!-- <block class="AudereCommerce\Testimonial\Block\Testimonials" name="testimonials" template="Magento_Cms::home/testimonials.phtml" before="home.banners.second" /> -->
+            <!-- <block class="Magento\Framework\View\Element\Template" name="home.banners.second" template="Magento_Cms::home/banners-second.phtml" /> -->
+			<block class="Affinity\Stonegate\Block\Category\Featured" name="featured.categories" template="Affinity_Stonegate::category/featured.phtml">
+				<block class="Magento\Cms\Block\Block" name="homepage.promo.block.1">
+					<arguments>
+						<argument name="block_id" xsi:type="string">homepage_promo_block_1</argument>
+					</arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="homepage.promo.block.2">
+					<arguments>
+						<argument name="block_id" xsi:type="string">homepage_promo_block_2</argument>
+					</arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="homepage.promo.banner.content">
+					<arguments>
+						<argument name="block_id" xsi:type="string">homepage_promo_banner_content</argument>
+					</arguments>
+				</block>
+			</block>
+            <block class="AudereCommerce\BrandManager\Block\Brands" name="brands" template="AudereCommerce_BrandManager::slider.phtml" />
+			<block class="Magefan\Blog\Block\Widget\Recent" name="latest.news" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="stonegate.additional" htmlTag="div" htmlClass="column-container colspan-2 info-columns section">
+                <container name="about.wrapper" htmlTag="div" htmlClass="column">
+                    <block class="Magento\Framework\View\Element\Template" name="about.stonegate" template="Stonegate_Base::content/common/about.phtml" />
+                </container>
+                <container name="newsletter.wrapper" htmlTag="div" htmlClass="column">
+                    <block class="Magento\Newsletter\Block\Subscribe" name="additional.newsletter.content" template="Magento_Newsletter::subscribe.phtml" />
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

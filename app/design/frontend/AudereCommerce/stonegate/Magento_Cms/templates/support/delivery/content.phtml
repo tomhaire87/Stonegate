@@ -1,0 +1,38 @@
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */ echo __('Delivery') ?></span>
+    </h1>
+</div>
+<h3 class="title">Delivery Schedule - Fair Simple Pricing</h3>
+<ul class="large-list">
+    <li>Place your order before 3:00 pm for standard next-day delivery on all in-stock items</li>
+    <li>Spend over £150 net to qualify for free delivery, excluding pallet items</li>
+    <li>Same-day, Saturday & specific time deliveries all available, get in touch to discuss</li>
+    <li>For orders outside of the UK, please contact us to arrange a suitable delivery method</li>
+</ul>
+<h4 class="subtitle">Simple Pricing – Quick Delivery</h4>
+<p>At Stonegate, we provide a simple, open and clear delivery pricing structure. The way we see it, it’s the only way to do business. We know how important it is to have what you need when you need it. We offer a comprehensive selection of delivery options to suit you and your business and when it’s urgent, we can get it to you. </p>
+<div class="column-container colspan-2">
+    <div class="column">
+        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('website_delivery_charges')->toHtml(); ?>
+        <div class="subtext">in the event of deliveries requiring a pallet service, costs may differ - see below.</div>
+    </div>
+    <div class="column">
+        <h4 class="subtitle">Next-Day, Nationwide Delivery</h4>
+        <p>Just as we work hard to help you to improve your business, we don’t sit back when it comes to practicality and cost efficiency in our own business either. Currently, our main delivery service is provided by FedEx.  We find that they are reliable and they allow us to offer you a consistent delivery service that is reasonably priced.</p>
+        <ul>
+            <li>Please note that there are some areas of the country where it’s not possible for us to provide a next day delivery service without special arrangement, please check with us when putting in your order if you might be in these areas.</li>
+            <li>We are able to deliver items up to 3 metres in length and also bulky items. For larger consignments, we often use a reliable pallet network with book-in and tail-lift options if necessary.</li>
+        </ul>
+        <h4 class="subtitle">Same Day UK Delivery</h4>
+        <p>Through holding excellent stock levels we are able to offer same-day delivery using a range of transport partners. If you are in urgent need of tooling, get in touch before placing your order and we can quote based on your needs.</p>
+        <h4 class="subtitle">Deliveries outside the UK</h4>
+        <p>We are able to offer a worldwide delivery service. Speak to a member of our.</p>
+    </div>
+</div>
+<h4 class="subtitle">Delivery Tracking</h4>
+<p>If you need an update as to the location of your delivery, speak to a member of our team on either +44 (0) 1482 620400, or email info@stonegatetooling.co.uk and we can contact the courier on your behalf. Our Customer Care team are available 07:00 – 16:30, Monday to Friday.</p>
+<h3 class="title">Pallet Delivery Charges - Next Day Service</h3>
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('pallet_delivery_charges_next_day_service')->toHtml(); ?>
+<h3 class="title">Pallet Delivery Charges - Next Day Service</h3>
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('pallet_delivery_charges_other_services')->toHtml(); ?>

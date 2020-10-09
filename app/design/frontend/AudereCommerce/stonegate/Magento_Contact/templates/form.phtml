@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<form class="form contact"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <div class="title">
+            <span>Send a Message</span>
+        </div>
+        <div class="field note no-label"><?php /* @escapeNotVerified */ echo __('We’re always happy to speak to our customers or answer any queries. If you would like to get in touch with us, fill in the form below and we’ll get back to you as soon as possible. Alternatively, you can contact us using the details on the right.') ?></div>
+        <div class="form-left">
+            <div class="field name required">
+                <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
+                <div class="control">
+                    <input name="name" id="name" placeholder="<?php /* @escapeNotVerified */ echo __('Name') ?>" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" placeholder="<?php /* @escapeNotVerified */ echo __('Email') ?>" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field telephone">
+                <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+                <div class="control">
+                    <input name="telephone" id="telephone" placeholder="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="form-right">
+            <div class="field comment required">
+                <label class="label" for="comment"><span><?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?></span></label>
+                <div class="control">
+                    <textarea name="comment" id="comment" placeholder="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"><?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('comment')) ?></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="field copy-form">&nbsp;</div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Send') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Send') ?></span>
+            </button>
+        </div>
+    </div>
+</form>

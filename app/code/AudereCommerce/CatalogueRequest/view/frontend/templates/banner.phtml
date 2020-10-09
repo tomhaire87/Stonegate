@@ -1,0 +1,6 @@
+<?php
+$html = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('request_catalogue_banner')->toHtml();
+?>
+<div class="banner-wrapper">
+    <?php echo strip_tags($html, '<img>'); ?>
+</div>

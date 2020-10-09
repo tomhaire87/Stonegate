@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AudereCommerce_SlideManager::slidemanager"
+             parent="Magento_Backend::content"
+             title="Slide Manager"
+             module="AudereCommerce_SlideManager"
+             resource="AudereCommerce_SlideManager::slidemanager"
+             sortOrder="50" />
+
+        <add id="AudereCommerce_SlideManager::slidemanager_slider"
+             parent="AudereCommerce_SlideManager::slidemanager"
+             title="Sliders"
+             module="AudereCommerce_SlideManager"
+             resource="AudereCommerce_SlideManager::slider"
+             action="slidemanager/slider"
+             sortOrder="0" />
+        <add id="AudereCommerce_SlideManager::slidemanager_slide"
+             parent="AudereCommerce_SlideManager::slidemanager"
+             title="Slides"
+             module="AudereCommerce_SlideManager"
+             resource="AudereCommerce_SlideManager::slide"
+             action="slidemanager/slide"
+             sortOrder="1" />
+    </menu>
+</config>

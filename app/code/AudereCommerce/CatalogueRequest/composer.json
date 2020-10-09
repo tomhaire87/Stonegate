@@ -1,0 +1,12 @@
+{
+    "name": "auderecommerce/cataloguerequest",
+    "description": "Stonegate Request Catalogue",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "AudereCommerce\\CatalogueRequest\\": ""
+        },
+        "files": ["registration.php"]
+    }
+}

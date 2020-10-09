@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AudereCommerce_Testimonial::testimonial" title="Testimonial" translate="title" module="AudereCommerce_Testimonial" sortOrder="0" parent="Magento_Backend::content" resource="AudereCommerce_Testimonial::testimonial" />
+        <add id="AudereCommerce_Testimonial::testimonial_testimonial" title="Testimonial" translate="title" module="AudereCommerce_Testimonial" sortOrder="10" parent="AudereCommerce_Testimonial::testimonial" action="testimonial/testimonial" resource="AudereCommerce_Testimonial::testimonial" />
+    </menu>
+</config>

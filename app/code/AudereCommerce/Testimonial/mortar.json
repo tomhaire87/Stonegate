@@ -1,0 +1,114 @@
+{
+  "namespace": "AudereCommerce\\Testimonial",
+  "models": [
+    {
+      "name": "Testimonial",
+      "label": "Testimonial",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "company",
+          "label": "Company",
+          "type": "varchar",
+          "length": 255,
+          "required": false
+        },
+        {
+          "name": "image",
+          "label": "Image",
+          "type": "image",
+          "required": true
+        },
+        {
+          "name": "testimonial",
+          "label": "Testimonial",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "active",
+          "label": "Active",
+          "type": "int",
+          "length": 1,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "label": "Created At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT"
+        },
+        {
+          "name": "updated_at",
+          "label": "Updated At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE"
+        }
+      ],
+      "grid_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text"
+        },
+        {
+          "label": "Company",
+          "code": "company",
+          "type": "text"
+        },
+        {
+          "label": "Image",
+          "code": "image",
+          "type": "text"
+        },
+        {
+          "label": "Active",
+          "code": "active",
+          "type": "toggle"
+        }
+      ],
+      "form_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "label": "Company",
+          "code": "company",
+          "type": "text",
+          "required": false
+        },
+        {
+          "label": "Image",
+          "code": "image",
+          "type": "image",
+          "required": true
+        },
+        {
+          "label": "Testimonial",
+          "code": "testimonial",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "label": "Active",
+          "code": "active",
+          "type": "toggle",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

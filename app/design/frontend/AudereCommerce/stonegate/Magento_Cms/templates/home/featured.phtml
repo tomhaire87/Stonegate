@@ -1,0 +1,128 @@
+<?php
+/* @var $block AudereCommerce\Stonegate\Block\Product\Featured */
+$featuredCollection = $block->getFeaturedProductCollection();
+$featuredGroupLabels = $block->getFeaturedGroupLabels();
+?>
+
+<div class="featured-products">
+    <div class="title-wrapper">
+        <h3 class="title"><span>Featured <b>Products</b></span></h3>
+        <div class="slider-controls">
+            <ul class="featured-group">
+                <?php foreach($featuredGroupLabels as $label): ?>
+                    <li class="item" data-type="<?php echo str_replace(' ', '-', $label); ?>"><?php echo $label; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="arrows">
+                <div class="featured-products-left control"></div>
+                <div class="featured-products-right control"></div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-container products-grid featured-products-container">
+        <ul class="swiper-wrapper product-items colspan-4 column-container">
+            <?php foreach ($featuredCollection as $_product): ?>
+                <?php
+                $image = 'category_page_list';
+                $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+                $productImage = $_imagehelper->init($_product, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(340)->getUrl();
+                $type = $_product->getTypeID();
+                ?>
+                <li class="product-item swiper-slide" data-category="<?php echo str_replace(' ', '-', $_product->getResource()->getAttribute('featured_group')->getFrontend()->getValue($_product)); ?>">
+                    <div class="product-item-info">
+                        <div class="product photo product-item-photo">
+                            <span class="product-image-container">
+                                <span class="product-image-wrapper">
+                                    <img src="<?php echo $productImage; ?>" class="product-image-photo"/>
+                                </span>
+                            </span>
+                            <div data-role="add-to-links" class="actions-secondary">
+                                <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="action view-product">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-item-details">
+                            <div class="details-wrapper">
+                                <strong class="product name product-item-name">
+                                    <a class="product-item-link"
+                                       href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+                                        <span><?php echo $_product->getName(); ?></span>
+                                    </a>
+                                </strong>
+                                <?php if($type !== 'grouped'): ?>
+                                <div class="price-box">
+                                    <span class="price">
+                                        <?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($_product->getFinalPrice(), true, false); ?>
+                                    </span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-item-inner">
+                                <?php if($type !== 'grouped'): ?>
+                                <div class="actions-primary">
+                                    <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                    <form data-role="tocart-form" action="<?php echo $baseUrl = $this->getBaseUrl().'checkout/cart/add/uenc/product/'.$_product->getId();?>" method="post">
+                                        <input type="hidden" name="product" value="<?php echo $postParams['data']['product']; ?>">
+                                        <?php echo $block->getBlockHtml('formkey')?>
+                                        <button type="submit" title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>" class="action tocart primary">
+                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <?php else: ?>
+                                    <a href="<?php echo $_product->getProductUrl(); ?>" class="action view-product">View Products</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+</script>
+<script type="text/javascript">
+    requirejs(['jquery'], function ($) {
+        requirejs(['jquery', 'js/library/slider'], function ($, slider) {
+            var featuredProducts = new Swiper('.featured-products-container', {
+                prevButton: '.featured-products-left',
+                nextButton: '.featured-products-right',
+                slidesPerView: 4,
+                spaceBetween: 30,
+                roundLengths: true,
+                preventClicksPropagation: false,
+                preventClicks: false,
+                breakpoints: {
+                    1240: {
+                        slidesPerView: 3
+                    },
+                    920: {
+                        slidesPerView: 2
+                    },
+                    480: {
+                        slidesPerView: 1
+                    }
+                }
+            });
+        });
+
+        $('.featured-group li.item').click(function() {
+            var group = $(this).data('type');
+
+            $('.featured-group li.item').removeClass('active');
+            $(this).addClass('active');
+
+            $('.featured-products .product-item').removeClass('visible');
+            $('.featured-products .product-item[data-category=' + group + ']').addClass('visible');
+        });
+        $('.featured-group li.item:first-of-type').click();
+    });
+</script>

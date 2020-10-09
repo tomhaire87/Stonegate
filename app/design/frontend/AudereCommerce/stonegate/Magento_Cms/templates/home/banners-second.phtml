@@ -1,0 +1,9 @@
+<?php
+$html = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home_banners_second')->toHtml();
+?>
+
+<div class="page-main section">
+    <div class="masonry home-second">
+        <?php echo strip_tags($html, '<a><img>'); ?>
+    </div>
+</div>

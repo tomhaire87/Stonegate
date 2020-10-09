@@ -1,0 +1,56 @@
+<div class="info-panel-bar footer-panel-bar">
+	<div class="container swiper-container">
+		<div class="row swiper-wrapper">
+			<div class="col swiper-slide">
+				<div class="delivery panel-content">
+					<img src="<?php echo $block->getViewFileUrl('images/global/next-day.png') ?>" alt="<?php echo __('Next Working Day, Nationwide Delivery') ?>" title="<?php echo __('Next Working Day, Nationwide Delivery') ?>">
+					<span class="title"><?php echo __('Next Working Day, Nationwide Delivery') ?></span>
+				</div>
+			</div>
+			<div class="col swiper-slide">
+				<div class="delivery panel-content">
+					<img src="<?php echo $block->getViewFileUrl('images/global/free-del.png') ?>" alt="<?php echo __('Free delivery on orders over £200') ?>" title="<?php echo __('Free delivery on orders over £200') ?>">
+					<span class="title"><?php echo __('Free delivery on orders over £200') ?></span>
+				</div>
+			</div>
+			<div class="col swiper-slide">
+				<a href="<?php echo $block->getUrl('requesttrade') ?>" class="account panel-content" title="<?php echo __('Get your Stonegate PRO Account') ?>">
+					<img src="<?php echo $block->getViewFileUrl('images/global/account.png') ?>" alt="<?php echo __('Get your Stonegate PRO Account') ?>" title="<?php echo __('Get your Stonegate PRO Account') ?>">
+					<span class="title"><?php echo __('Get your Stonegate PRO Account') ?></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    requirejs(['jquery', 'js/library/slider'], function($, slider) {
+		var hasSlider		= false;
+		var _panelSlider	= false;
+		var doSlider		= function() {
+			_panelSlider	= new Swiper('.footer-panel-bar .swiper-container', {
+				autoplay	: 2000
+			});
+			hasSlider	= true;
+		}
+		$(document).ready(function() {
+			if($(window).width() < 1024) {
+				if(hasSlider == false) {
+					doSlider();
+				}
+			}
+		});
+		$(window).resize(function() {
+			var _window	= $(window);
+			if(_window.width() < 1024) {
+				if(hasSlider == false) {
+					doSlider();
+				}
+			} else {
+				if(hasSlider == true) {
+					_panelSlider.destroy(true, true);
+					hasSlider	= false;
+				}
+			}
+		});
+    });
+</script>

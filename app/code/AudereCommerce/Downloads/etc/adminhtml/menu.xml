@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AudereCommerce_Downloads::downloads" title="Downloads" translate="title" module="AudereCommerce_Downloads" sortOrder="0" parent="Magento_Backend::content" resource="AudereCommerce_Downloads::downloads" />
+        <add id="AudereCommerce_Downloads::downloads_download_type" title="Download Type" translate="title" module="AudereCommerce_Downloads" sortOrder="10" parent="AudereCommerce_Downloads::downloads" action="downloads/downloadtype" resource="AudereCommerce_Downloads::download_type" />
+        <add id="AudereCommerce_Downloads::downloads_download_group" title="Download Group" translate="title" module="AudereCommerce_Downloads" sortOrder="20" parent="AudereCommerce_Downloads::downloads" action="downloads/downloadgroup" resource="AudereCommerce_Downloads::download_group" />
+        <add id="AudereCommerce_Downloads::downloads_download" title="Download" translate="title" module="AudereCommerce_Downloads" sortOrder="30" parent="AudereCommerce_Downloads::downloads" action="downloads/download" resource="AudereCommerce_Downloads::download" />
+    </menu>
+</config>

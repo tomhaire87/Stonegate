@@ -1,0 +1,68 @@
+<div class="page-main section faqs">
+    <div class="page-title-wrapper">
+        <h2 class="title"><?php /* @escapeNotVerified */ echo __('Trade Account Frequently Asked Questions') ?></h2>
+    </div>
+    <div class="subtitle">General</div>
+    <div class="faq-container">
+        <div class="faq">
+            <div class="question">
+                <h5>Can I speak to your Customer Care Team?</h5>
+            </div>
+            <div class="answer">
+                <p>Of course! Simply call +44 (0) 1482 620400, who are by the phones between 07:00 – 16:00, Monday to Friday and are more than happy to help with every enquirey be it sales of technical support.</p>
+                <p>If you would rather get in touch via email, you can reach us at <a href="mailto:info@stonegatetooling.co.uk">info@stonegatetooling.co.uk</a>.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                <h5>Why is it asking me to Sign In / Save my Details?</h5>
+            </div>
+            <div class="answer">
+                <p>We ask you to Sign In to make buying online with us quicker and easier. Through saving your details with us we can securely save your details to allow you to checkout much quicker.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                <h5>What is a Trade Account?</h5>
+            </div>
+            <div class="answer">
+                <p>A Trade Account is for business customers who purchase with us frequently, usually on credit terms. Trade Account customers benefit from being able to save their details online, manage other users on the business account, view order history, manage addresses and pay invoices. </p>
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                <h5>I’ve forgotten my password! Help!?</h5>
+            </div>
+            <div class="answer">
+                <p>On the log in page, simply click ‘Forgotten Password’. This will direct you to a helpful form where you can change your password and gain access to your account! </p>
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                <h5>I have a new credit/debit card, how do I amend my details to buy online?</h5>
+            </div>
+            <div class="answer">
+                <p>Simply sign-in as usual and add items to your basket before proceeding to the checkout. When you are in the checkout stage, change the saved card details and continue with your purchase. If you are a Trade Account customer you can manage your payment details for both card and credit in your account section. </p>
+            </div>
+        </div>
+        <div class="faq">
+            <div class="question">
+                <h5>How do I know if my promotional code has worked?</h5>
+            </div>
+            <div class="answer">
+                <p>When you enter a promotional code at checkout stage you will see that a flag telling you that the code has been accepted and the discount applied.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery'], function($) {
+        $('.faq-container .faq').click(function() {
+            if (!$(this).hasClass('active')) {
+                $('.faq .answer').stop().slideUp(150);
+                $('.faq').removeClass('active');
+                $(this).addClass('active').find('.answer').stop().slideDown(150);
+            }
+        });
+    });
+</script>

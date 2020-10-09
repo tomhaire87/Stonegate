@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var Affinity\Stonegate\Block\Category\Featured $block
+ * @var Magento\Catalog\Model\ResourceModel\Category\Collection $_featuredCategories
+ */
+?>
+<div class="featured-blocks">
+	<div class="page-main section">
+		<div class="featured-blocks-container">
+			<?php echo $block->getChildHtml('homepage.promo.block.1') ?>
+			<?php echo $block->getChildHtml('homepage.promo.block.2') ?>
+		</div>
+	</div>
+</div>
+<?php $_featuredCategories = $block->getFeaturedCategoryCollection() ?>
+<?php if($_featuredCategories->count()) : ?>
+	<div class="featured-categories">
+		<div class="page-main section">
+			<div class="featured-categories-container">
+				<?php $i	= 1 ?>
+				<?php foreach($_featuredCategories as $_category) : ?>
+					<?php $categoryName	= $block->escapeHtml($_category->getName()) ?>
+					<div class="category-column column-<?php echo $i ?>">
+						<a href="<?php echo $_category->getUrl() ?>">
+							<img src="<?php echo $block->escapeUrl($_category->getImageUrl()) ?>" alt="<?php echo $categoryName ?>" title="<?php echo $categoryName ?>">
+							<div class="name-overlay">
+								<div class="name"><?php echo $categoryName ?></div>
+							</div>
+						</a>
+					</div>
+					<?php $i++ ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	</div>
+<?php endif ?>
+<?php echo $this->getChildHtml('homepage.promo.banner.content') ?>

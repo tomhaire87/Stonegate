@@ -1,0 +1,13 @@
+<?php /* @var $block Magento\Framework\View\Element\Template */ ?>
+
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */ echo __('Request Catalogue') ?></span>
+    </h1>
+</div>
+
+<div class="header"><?php echo __('Thanks for your request'); ?></div>
+
+<div class="content">
+    <p><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('catalogue_request_success_message')->toHtml(); ?></p>
+</div>

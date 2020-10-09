@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.info.details">
+            <block class="AudereCommerce\Stonegate\Block\Product\Review" name="customer.reviews.tab" as="customer.reviews" template="Magento_Review::review.phtml" group="detailed_info">
+                <block class="Magento\Review\Block\Form" name="customer.product.review.form" as="customer_review_form">
+                    <container name="customer.product.review.form.fields.before" as="customer_form_fields_before" label="Review Form Fields Before"/>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

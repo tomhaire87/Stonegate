@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+	<widget class="Affinity\Stonegate\Block\Widget\HomepagePromo" id="affinity_stonegate_homepage_promo">
+		<label>Homepage Promo Block</label>
+		<description></description>
+		<parameters>
+			<parameter name="title" sort_order="10" visible="true" xsi:type="text">
+				<label>Title</label>
+			</parameter>
+			<parameter name="button_text" sort_order="20" visible="true" xsi:type="text">
+				<label>Button Text</label>
+			</parameter>
+			<parameter name="flag_text" sort_order="30" visible="true" xsi:type="text">
+				<label>Flag Text</label>
+			</parameter>
+			<parameter name="url_identifier" sort_order="40" visible="true" xsi:type="text">
+				<label>URL Key</label>
+			</parameter>
+			<parameter name="image" xsi:type="block" required="true" visible="true" sort_order="1">
+				<label translate="true">Image</label>
+				<block class="Affinity\Stonegate\Block\Adminhtml\Widget\Field\ImageChooser">
+					<data>
+						<item name="button" xsi:type="array">
+							<item name="open" xsi:type="string">Choose Image...</item>
+						</item>
+					</data>
+				</block>
+			</parameter>
+		</parameters>
+	</widget>
+	<widget class="Affinity\Stonegate\Block\Widget\HomepagePromoBanner" id="affinity_stonegate_homepage_promo_banner">
+		<label>Homepage Promo Banner</label>
+		<description></description>
+		<parameters>
+			<parameter name="title" sort_order="10" visible="true" xsi:type="text">
+				<label>Title</label>
+			</parameter>
+			<parameter name="button_text" sort_order="20" visible="true" xsi:type="text">
+				<label>Button Text</label>
+			</parameter>
+			<parameter name="url_identifier" sort_order="40" visible="true" xsi:type="text">
+				<label>URL Key</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

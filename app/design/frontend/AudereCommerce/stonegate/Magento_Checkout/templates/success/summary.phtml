@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var \AudereCommerce\Stonegate\Block\Checkout\Success
+ */
+$order = $block->getOrder();
+$billingAddress = $order->getBillingAddress();
+?>
+
+<div class="order-summary">
+    <div class="title"><span><div class="icon"></div>Order Summary</span></div>
+    <table>
+        <tbody>
+            <tr>
+                <th>Product</th>
+                <th>Total</th>
+            </tr>
+            <?php foreach ($order->getAllVisibleItems() as $_item): ?>
+                <tr>
+                    <td><?php echo $_item->getName(); ?></td>
+                    <td><?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($_item->getPrice(), true, false); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="order-total">
+    <table>
+        <tbody>
+        <tr>
+            <td>Subtotal:</td>
+            <td><?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($order->getSubtotal(), true, false); ?></td>
+        </tr>
+        <tr>
+            <td>Delivery:</td>
+            <td><?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($order->getShippingAmount(), true, false); ?></td>
+        </tr>
+        <tr>
+            <td class="total">Total:</td>
+            <td class="total price"><?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($order->getGrandTotal(), true, false); ?></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

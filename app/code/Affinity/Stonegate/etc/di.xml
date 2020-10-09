@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Widget\Model\Widget">
+        <plugin name="Affinity_Stonegate_plugin_magento_widget_model_widget" type="Affinity\Stonegate\Plugin\Magento\Widget\Model\Widget" />
+    </type>
+	<preference for="Magento\Theme\Block\Html\Topmenu" type="Affinity\Stonegate\Block\Html\Topmenu" />
+</config>

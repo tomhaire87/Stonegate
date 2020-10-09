@@ -1,0 +1,15 @@
+<?php
+$categoryCollection = $this->getCategoryCollection();
+?>
+<div class="sidebar">
+    <div class="category-list">
+        <div class="title">
+            <span><?php /* @escapeNotVerified */ echo __('Category') ?></span>
+        </div>
+        <ul class="list">
+            <?php foreach ($categoryCollection as $category): ?>
+                <li class="item"><a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="title">
+    <span>Contact</span>
+</div>
+<ul class="contact-details-icons">
+    <li class="address">
+        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+        <?php echo $this->getStoreAddress(); ?>
+    </li>
+    <li class="telephone">
+        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+        <div>Phone:
+            <a href="tel:<?php echo $this->getStoreTelephone(); ?>"><?php echo $this->getStoreTelephone(); ?></a>
+        </div>
+    </li>
+    <li class="email">
+        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+        <div>
+            <a href="<?php echo $this->getStoreEmail(); ?>"><?php echo $this->getStoreEmail(); ?></a>
+        </div>
+    </li>
+	<li class="social">
+		<div>
+			<?php echo __('Social:') ?> <?php echo $block->getChildHtml('social.links.footer') ?>
+		</div>
+	</li>
+</ul>

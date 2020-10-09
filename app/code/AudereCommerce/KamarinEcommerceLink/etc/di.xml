@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2018 Audere Commerce Limited. All rights reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Download\NewCustomerRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Download\NewCustomerRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Download\OrderDetailRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Download\OrderDetailRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Download\OrderHeaderRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Download\OrderHeaderRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\CustomerSpecialPriceRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\CustomerSpecialPriceRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\CustomerRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\CustomerRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\OrderDetailStatusRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\OrderDetailStatusRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\OrderHeaderStatusRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\OrderHeaderStatusRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\QuantityBreakSpecialPriceRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\QuantityBreakSpecialPriceRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\StockRecordRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\StockRecordRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\StockQuantitiesRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\StockQuantitiesRepository" />
+    <preference for="AudereCommerce\KamarinEcommerceLink\Api\Upload\VatRateRepositoryInterface" type="AudereCommerce\KamarinEcommerceLink\Model\Upload\VatRateRepository" />
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Download\NewCustomer">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Download\OrderDetail">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Download\OrderHeader">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\CustomerSpecialPrice">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\Customer">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\OrderDetailStatus">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\OrderHeaderStatus">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\QuantityBreakSpecialPrice">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\StockRecord">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\StockQuantities">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\KamarinEcommerceLink\Model\ResourceModel\Upload\VatRate">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">kamarin_ecommerce_link</argument>
+        </arguments>
+    </type>
+</config>

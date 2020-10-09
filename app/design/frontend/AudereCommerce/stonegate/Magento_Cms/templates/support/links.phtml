@@ -1,0 +1,24 @@
+<h3 class="title">Support</h3>
+<ul class="item-list support-nav">
+    <li class="item"><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
+    <li class="item"><a href="<?php echo $this->getUrl('customer-service'); ?>">Customer Service</a></li>
+    <li class="item parent">
+        <a href="<?php echo $this->getUrl('terms-conditions'); ?>">Terms & Conditions</a>
+        <ul class="submenu">
+            <li class="item"><a href="<?php echo $this->getUrl('website-terms-conditions-of-sale'); ?>">Website Terms & Condtions of Sale</a></li>
+            <li class="item"><a href="<?php echo $this->getUrl('general-terms-conditions-of-sale'); ?>">General Terms & Conditions of Sale</a></li>
+            <li class="item"><a href="<?php echo $this->getUrl('conditions-for-hire-and-sales-of-goods'); ?>">Conditions for Hire and Sales of Goods</a></li>
+        </ul>
+    </li>
+    <li class="item"><a href="<?php echo $this->getUrl('delivery'); ?>">Delivery</a></li>
+    <li class="item"><a href="<?php echo $this->getUrl('privacy'); ?>">Privacy</a></li>
+</ul>
+<script type="text/javascript">
+    requirejs(['jquery'], function($) {
+        $('.support-nav li.item.parent').click(function() {
+            $(this).toggleClass('active').children('.submenu').toggleClass('visible');
+        });
+        $('.breadcrumb-title h1.page-title span').text('Support');
+        $('.support-nav a[href^="' + document.location.href + '"]').parent('li.item').addClass('current');
+    });
+</script>

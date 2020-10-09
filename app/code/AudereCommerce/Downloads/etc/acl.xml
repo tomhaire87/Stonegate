@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Magento_Backend::content_elements">
+                        <resource id="AudereCommerce_Downloads::downloads" title="Downloads" translate="title" sortOrder="100">
+                            <resource id="AudereCommerce_Downloads::download_type" title="Download Type" translate="title" sortOrder="10">
+                                <resource id="AudereCommerce_Downloads::download_type_save" title="Save Download Type" translate="true" sortOrder="10" />
+                                <resource id="AudereCommerce_Downloads::download_type_delete" title="Delete Download Type" translate="true" sortOrder="20" />
+                            </resource>
+                            <resource id="AudereCommerce_Downloads::download" title="Download" translate="title" sortOrder="20">
+                                <resource id="AudereCommerce_Downloads::download_save" title="Save Download" translate="true" sortOrder="10" />
+                                <resource id="AudereCommerce_Downloads::download_delete" title="Delete Download" translate="true" sortOrder="20" />
+                            </resource>
+                            <resource id="AudereCommerce_Downloads::download_group" title="Download Group" translate="title" sortOrder="20">
+                                <resource id="AudereCommerce_Downloads::download_group_save" title="Save Download Group" translate="true" sortOrder="10" />
+                                <resource id="AudereCommerce_Downloads::download_group_delete" title="Delete Download Group" translate="true" sortOrder="20" />
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

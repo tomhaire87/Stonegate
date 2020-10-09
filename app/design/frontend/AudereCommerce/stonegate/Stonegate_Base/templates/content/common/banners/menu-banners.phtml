@@ -1,0 +1,8 @@
+<?php
+$html = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('menu_ad_banners')->toHtml();
+?>
+
+
+<div class="nav-right">
+    <?php echo strip_tags($html, '<a><img>'); ?>
+</div>

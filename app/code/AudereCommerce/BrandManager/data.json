@@ -1,0 +1,63 @@
+{
+  "namespace": "AudereCommerce",
+  "module": "BrandManager",
+  "models": {
+    "brand": {
+      "name": "Brand",
+      "comment": "Brand",
+      "generate_schema": true,
+      "generate_models": true,
+      "columns": {
+        "name": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Name"
+        },
+        "description": {
+          "datatype": "text",
+          "nullable": false,
+          "comment": "description"
+        },
+        "image": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Image"
+        },
+        "category_id": {
+          "datatype": "int",
+          "unsigned": true,
+          "nullable": false,
+          "comment": "Category"
+        },
+        "created_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT",
+          "comment": "Created At"
+        },
+        "updated_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE",
+          "comment": "Updated At"
+        }
+      },
+      "foreign_keys": [
+        {
+          "type": "one-one",
+          "column": "category_id",
+          "getter_function": "getCategory",
+          "target_namespace": "Magento",
+          "target_function": "get",
+          "target_module": "Catalog",
+          "target_name": "Category",
+          "target_table": "catalog_category_entity",
+          "target_column": "entity_id",
+          "on_delete": "ACTION_NO_ACTION"
+        }
+      ]
+    }
+  }
+}

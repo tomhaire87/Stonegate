@@ -1,0 +1,39 @@
+<?php /** @var \Affinity\OfflineOrders\Block\Index $block */ ?>
+<?php $orders	= $block->getOfflineOrders() ?>
+<?php if($orders->count()) : ?>
+	<hr />
+	<div class="page-title-wrapper">
+		<h1 class="page-title">
+			<span><?php echo __('Offline Orders') ?></span>
+		</h1>
+	</div>
+	<table class="order-table">
+		<thead>
+			<tr>
+				<th><?php echo __('Sales Order Number') ?></th>
+				<th><?php echo __('Customer Order Number') ?></th>
+				<th><?php echo __('Payment Amount') ?></th>
+				<th><?php echo __('Order Date') ?></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($orders as $order) : ?>
+				<?php /** @var Affinity\OfflineOrders\Model\Order $order */ ?>
+				<tr>
+					<td><?php echo $order->getSalesOrderNumber() ?></td>
+					<td><?php echo $order->getCustomerOrderNumber() ?></td>
+					<td><?php echo $order->getPaymentAmount() ?></td>
+					<td><?php echo $order->getSalesOrderDate() ?></td>
+					<td style="text-align: right;">
+						<a href="<?php echo $order->getViewUrl() ?>"><?php echo __('View') ?></a>
+						<?php if($order->getPdfFile()) : ?>
+							|
+							<a href="<?php echo $order->getDownloadUrl() ?>"><?php echo __('Download PDF') ?></a>
+						<?php endif ?>
+					</td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+<?php endif ?>

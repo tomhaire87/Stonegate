@@ -1,0 +1,13 @@
+<div class="header-push"></div>
+<script>
+    requirejs(['jquery'], function($) {
+        $('.header-push').css('height', $('.page-header').outerHeight());
+    });
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "js/header": {}
+        }
+    }
+</script>

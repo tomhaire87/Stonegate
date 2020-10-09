@@ -1,0 +1,351 @@
+{
+  "namespace": "AudereCommerce\\Downloads",
+  "models": [
+    {
+      "name": "Download\\Type",
+      "label": "Download Type",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "image",
+          "label": "Image",
+          "type": "image",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "label": "Created At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT"
+        },
+        {
+          "name": "updated_at",
+          "label": "Updated At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE"
+        }
+      ],
+      "grid_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text"
+        },
+        {
+          "label": "Image",
+          "code": "image",
+          "type": "text"
+        }
+      ],
+      "form_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "label": "Image",
+          "code": "image",
+          "type": "image",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Download\\Group",
+      "label": "Download Group",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "url_key",
+          "label": "Url Key",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "label": "Created At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT"
+        },
+        {
+          "name": "updated_at",
+          "label": "Updated At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE"
+        }
+      ],
+      "grid_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text"
+        },
+        {
+          "label": "URL Key",
+          "code": "url_key",
+          "type": "text"
+        }
+      ],
+      "form_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "label": "URL Key",
+          "code": "url_key",
+          "type": "text",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Download",
+      "label": "Download",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "type_id",
+          "label": "Type",
+          "type": "int",
+          "unsigned": true,
+          "required": true
+        },
+        {
+          "name": "group_id",
+          "label": "Group",
+          "type": "int",
+          "unsigned": true,
+          "required": true
+        },
+        {
+          "name": "path",
+          "label": "File Path",
+          "type": "varchar",
+          "length": 255,
+          "required": true
+        },
+        {
+          "name": "active",
+          "label": "Active",
+          "type": "int",
+          "length": 1,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "label": "Created At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT"
+        },
+        {
+          "name": "updated_at",
+          "label": "Updated At",
+          "type": "timestamp",
+          "required": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE"
+        }
+      ],
+      "grid_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text"
+        },
+        {
+          "label": "Type",
+          "code": "type_id",
+          "type": "select",
+          "model": {
+            "namespace": "AudereCommerce\\Downloads",
+            "model": "Download\\Type",
+            "id": "id",
+            "label": "name"
+          }
+        },
+        {
+          "label": "Group",
+          "code": "group_id",
+          "type": "select",
+          "model": {
+            "model": "Download\\Group",
+            "id": "id",
+            "label": "name"
+          }
+        },
+        {
+          "label": "File",
+          "code": "path",
+          "type": "text"
+        },
+        {
+          "label": "Is Active",
+          "code": "active",
+          "type": "toggle"
+        }
+      ],
+      "form_columns": [
+        {
+          "label": "Name",
+          "code": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "label": "Type",
+          "code": "type_id",
+          "type": "select",
+          "model": {
+            "namespace": "AudereCommerce\\Downloads",
+            "model": "Download\\Type",
+            "id": "id",
+            "label": "name"
+          },
+          "required": true
+        },
+        {
+          "label": "Group",
+          "code": "group_id",
+          "type": "select",
+          "model": {
+            "model": "Download\\Group",
+            "id": "id",
+            "label": "name"
+          },
+          "required": true
+        },
+        {
+          "label": "File",
+          "code": "path",
+          "type": "file",
+          "required": true,
+          "extensions": [
+            "pdf",
+            "xls",
+            "xlsx",
+            "rtf",
+            "pub",
+            "ppt",
+            "pptx",
+            "doc",
+            "docx",
+            "zip",
+            "rar",
+            "tar",
+            "7z",
+            "csv"
+          ]
+        },
+        {
+          "label": "Is Active",
+          "code": "active",
+          "type": "toggle",
+          "required": true
+        },
+        {
+          "label": "Related Products",
+          "type": "grid",
+          "grid": {
+            "label": "Related Products",
+            "description": "Link products to this download",
+            "button_text": "Add Related Product",
+            "code": "product",
+            "get_target_function": "getProducts",
+            "columns": [
+              {
+                "label": "ID",
+                "id": "id",
+                "source_id": "entity_id",
+                "index": true,
+                "getter": "getId"
+              },
+              {
+                "label": "Name",
+                "id": "name",
+                "source_id": "name",
+                "type": "text",
+                "index": true,
+                "getter": "getName"
+              },
+              {
+                "label": "Attribute Set",
+                "id": "attribute_set_id",
+                "source_id": "attribute_set_id",
+                "type": "select",
+                "class": "Magento\\Catalog\\Model\\Product\\AttributeSet\\Options",
+                "getter": "getAttributeSetId"
+              },
+              {
+                "label": "AttributeSetText",
+                "id": "attribute_set_id",
+                "source_id": "attribute_set_id",
+                "type": "text",
+                "class": "Magento\\Catalog\\Ui\\Component\\Listing\\Columns\\AttributeSetText",
+                "visible": "false"
+              },
+              {
+                "label": "Status",
+                "id": "status",
+                "source_id": "status",
+                "type": "select",
+                "class": "Magento\\Catalog\\Model\\Product\\Attribute\\Source\\Status",
+                "index": true,
+                "getter": "getStatus"
+              },
+              {
+                "label": "SKU",
+                "id": "sku",
+                "source_id": "sku",
+                "type": "text",
+                "index": true,
+                "getter": "getSku"
+              }
+            ],
+            "target_collection": "Magento\\Catalog\\Model\\ResourceModel\\Product\\Collection",
+            "tables": {
+              "ids": {
+                "self": "id",
+                "target": "entity_id",
+                "relation_self": "download_id",
+                "relation_target": "catalog_product_entity_id"
+              },
+              "names": {
+                "relation": "auderecommerce_downloads_download_product",
+                "target": "catalog_product_entity"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

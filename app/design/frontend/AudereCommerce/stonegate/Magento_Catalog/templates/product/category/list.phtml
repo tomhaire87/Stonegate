@@ -1,0 +1,35 @@
+<?php
+$childCategories = $block->getChildCategories();
+$categoryProducts = $block->getCurrentCategory();
+?>
+<?php if ($childCategories->count()): ?>
+    <ul class="column-container colspan-3 category-grid">
+    <?php foreach ($childCategories as $childCategory): ?>
+    <?php /* @var $childCategory \Magento\Catalog\Api\Data\CategoryInterface */ ?>
+        <?php $childCategory->load($childCategory->getId()); ?>
+        <li class="category-item column">
+            <div class="product photo product-item-photo">
+                <span class="product-image-container">
+                    <span class="product-image-wrapper">
+                        <?php if (empty($childCategory->getImage())): ?>
+                            <img src="<?php echo $this->getViewFileUrl('images/placeholder.jpg') ?>" class="product-image-photo" />
+                        <?php else: ?>
+                            <img src="<?php echo $childCategory->getImageUrl(); ?>" class="product-image-photo"/>
+                        <?php endif; ?>
+                    </span>
+                </span>
+            </div>
+            <div class="inner-wrapper">
+                <a href="<?php echo $childCategory->getUrl(); ?>" class="category-title"><?php echo $childCategory->getName(); ?></a>
+                <a href="<?php echo $childCategory->getUrl(); ?>" class="action primary">Shop Now</a>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <script>
+        requirejs(['jquery'], function ($) {
+            $('h1.page-title').clone().prependTo('.category-title-wrapper');
+        });
+    </script>
+    <?php echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Stonegate_Base::content/common/banners/small-ads-wide.phtml')->toHtml(); ?>
+<?php endif; ?>

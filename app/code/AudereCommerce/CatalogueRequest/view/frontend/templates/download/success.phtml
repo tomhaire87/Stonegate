@@ -1,0 +1,21 @@
+<?php /* @var $block Magento\Framework\View\Element\Template */ ?>
+
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */ echo __('Request Catalogue') ?></span>
+    </h1>
+</div>
+
+<div class="header"><?php echo __('Thanks for your request'); ?></div>
+
+<div class="content">
+    <p><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('download_success_message')->toHtml(); ?></p>
+    <a class="action download" href="<?php echo $this->getViewFileUrl('images/catalogue_download/Stonegate_Catalogue_Edition_17.pdf'); ?>" download>Download</a>
+</div>
+<script>
+    requirejs(['jquery'], function($) {
+        $(document).ready(function() {
+            $('.action.download').get(0).click();
+        });
+    });
+</script>

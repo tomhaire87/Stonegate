@@ -1,0 +1,43 @@
+<?php
+$testimonialCollection = $block->getTestimonials();
+/*
+ * @var $block AudereCommerce\Testimonial\Block\Testimonials
+ */
+?>
+
+<div class="fullwidth testimonials">
+    <div class="page-main section">
+        <div class="quote-icon"></div>
+        <div class="swiper-container testimonials-slider-container">
+            <ul class="swiper-wrapper">
+                <?php foreach($testimonialCollection as $testimonial): ?>
+                    <li class="swiper-slide testimonial">
+                        <div class="quote"><?php echo '"' . $testimonial->getTestimonial() . '"'; ?></div>
+                        <div class="user">
+                            <img src="<?php echo $block->getTestimonialImage($testimonial); ?>" />
+                            <div class="details">
+                                <div class="name"><?php echo $testimonial->getName(); ?></div>
+                                <div class="company"><?php echo $testimonial->getCompany(); ?></div>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="swiper-pagination testimonials-slider-pagination"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery', 'js/library/slider'], function ($, slider) {
+        var featuredProducts = new Swiper('.testimonials-slider-container', {
+            roundLengths: true,
+            pagination: '.testimonials-slider-pagination',
+            paginationClickable: true,
+            shortSwipes: true,
+            preventClicksPropagation: false,
+            preventClicks: false,
+            autoHeight: false,
+            speed: 600,
+        });
+    });
+</script>

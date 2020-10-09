@@ -1,0 +1,9 @@
+<?php
+$_product = $block->getProduct();
+?>
+<?php if ($_product->getFabricatorsTip()): ?>
+    <div class="fabricators-tip">
+        <div class="title"><span>Fabricators Tip</span><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+        <p><?php echo $_product->getFabricatorsTip(); ?></p>
+    </div>
+<?php endif; ?>

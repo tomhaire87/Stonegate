@@ -1,0 +1,138 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Grouped product data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\BaseImage
+ * @var $block \Magento\GroupedProduct\Block\Product\View\Type\Grouped
+ */
+?>
+<?php $block->setPreconfiguredValue(); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $_associatedProducts = $block->getAssociatedProducts(); ?>
+<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+<?php $columns = $block->getFrontendGroupedAttributes($_product); ?>
+
+<div class="multibuy-message" style="display: none">
+    <h4 class="title"><?php /* @escapeNotVerified */ echo __('Multibuy savings available on this product!') ?></h4>
+    <span><?php /* @escapeNotVerified */ echo __('Simply increase the quantity in the table below to get big savings!') ?></span>
+</div>
+
+<div class="table-wrapper grouped" data-currency="<?php echo $block->getCurrentCurrencySymbol(); ?>">
+    <table class="table data grouped" id="super-product-table">
+        <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Grouped product items') ?></caption>
+        <thead>
+        <tr>
+            <th class="col" scope="col"></th>
+            <th class="col item" scope="col"><?php /* @escapeNotVerified */ echo __('Code') ?></th>
+            <?php foreach ($columns as $attributeLabel): ?>
+                <th class="col item attr" scope="col"><?php echo $attributeLabel; ?></th>
+            <?php endforeach; ?>
+            <?php if ($_product->isSaleable()): ?>
+                <th class="col item qty" scope="col"><?php /* @escapeNotVerified */ echo __('Qty') ?></th>
+            <?php endif; ?>
+            <th class="col item price" scope="col"><?php echo $block->getCurrentCurrencySymbol(); ?></th>
+        </tr>
+        </thead>
+
+        <?php if ($_hasAssociatedProducts): ?>
+        <?php foreach ($_associatedProducts as $_item): ?>
+        <tbody>
+            <tr class="item-details">
+                <td class="compare">
+                    <input type="checkbox" id="compare-<?php echo $_item->getId(); ?>" data-id="<?php echo $_item->getId(); ?>" />
+                    <label class="label" for="compare-<?php echo $_item->getId(); ?>"></label>
+                </td>
+                <td data-th="<?php echo $block->escapeHtml(__('Code')); ?>" class="col item sku">
+                    <strong class="product-item-sku"><?php echo $block->escapeHtml($_item->getSku()) ?></strong>
+                </td>
+                <?php foreach ($columns as $attributeCode => $attributeLabel): ?>
+                    <td class="attr"><?php echo $block->getProductAttributeValue($_item, $attributeCode); ?></td>
+                <?php endforeach; ?>
+                <?php if ($_product->isSaleable()): ?>
+                <td data-th="<?php echo $block->escapeHtml(__('Qty')); ?>" class="col qty">
+                <?php if ($_item->isSaleable()) : ?>
+                    <div class="control qty">
+                        <div class="qty-input">
+                            <div class="add"></div>
+                            <input type="number" name="super_group[<?php /* @escapeNotVerified */ echo $_item->getId() ?>]"
+                                   data-selector="super_group[<?php /* @escapeNotVerified */ echo $_item->getId() ?>]"
+                                   maxlength="12"
+                                   min="0"
+                                   value="<?php /* @escapeNotVerified */ echo $_item->getQty() * 1 ?>"
+                                   title="<?php /* @escapeNotVerified */ echo __('Qty') ?>"
+                                   class="input-text qty"
+                                   data-validate="{'validate-grouped-qty':'#super-product-table'}"
+                                   data-errors-message-box="#validation-message-box"
+                                   data-price='<?php echo $_item->getFinalPrice(1); ?>'
+                                   <?php if ($block->getCanShowProductPrice($_product)
+                                        && $block->getCanShowProductPrice($_item)
+                                        && trim($block->getProductPriceHtml(
+                                            $_item,
+                                            \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                                        ))): ?>
+                                   data-tier-price='<?php echo json_encode($_item->getTierPrice()) ?>'
+                                   <?php endif; ?>
+                            />
+                            <div class="subtract"></div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+                        <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+                    </div>
+                <?php endif; ?>
+                </td>
+                <?php endif; ?>
+                <td data-th="Price" class="col price">
+                    <div class="price-container price-final_price_total">
+                        <span class="price">0</span>
+                        <span class="no-qty-price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($_item->getFinalPrice(1),true,false); ?></span>
+                    </div>
+                </td>
+            </tr>
+            <?php if ($block->getCanShowProductPrice($_product)
+                && $block->getCanShowProductPrice($_item)
+                && trim($block->getProductPriceHtml(
+                    $_item,
+                    \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                ))): ?>
+                <tr class="row-tier-price">
+                    <td class="tier-price-outer">
+                        <?php echo $block->getProductPriceHtml($_item, \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE); ?>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    requirejs(['jquery'], function($) {
+                        $('.multibuy-message').css('display', 'block');
+                    });
+                </script>
+            <?php endif; ?>
+        </tbody>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tbody>
+            <tr>
+                <td class="unavailable"
+                    colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>">
+                    <?php /* @escapeNotVerified */ echo __('No options of this product are available.') ?>
+                </td>
+            </tr>
+        </tbody>
+        <?php endif; ?>
+    </table>
+</div>
+<div id="validation-message-box"></div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "js/product/grouped": {}
+        }
+    }
+</script>

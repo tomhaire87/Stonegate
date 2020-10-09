@@ -1,0 +1,46 @@
+<?php
+/*@var $block AudereCommerce\BrandManager\Block\Brands*/
+$brandsCollection = $block->getBrands();
+?>
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span class="base"><?php /* @escapeNotVerified */
+            echo __('Our Brands') ?></span>
+    </h1>
+</div>
+<div class="brands-description"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('our_brands_description')->toHtml(); ?></div>
+<div class="brands-grid">
+    <?php foreach ($brandsCollection as $brand): ?>
+        <div class="brand">
+            <div class="logo-container">
+                <span class="logo-wrapper">
+                    <img src="<?php echo $block->getBrandImageUrl($brand); ?>" class="brand-logo"/>
+                </span>
+            </div>
+            <div class="info">
+                <div class="close"></div>
+                <div class="wrapper">
+                    <div class="description"><?php echo $brand->getDescription(); ?></div>
+                    <?php if ($category = $brand->getCategory()): ?>
+                        <a href="<?php echo $category->getUrl(); ?>" class="action primary">Shop Now</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery'], function ($) {
+        $('.brands-grid .brand .logo-container').click(function () {
+            $('.brands-grid .brand').removeClass('visible');
+            $(this).parent('.brand').addClass('visible');
+        });
+        $('.brands-grid .brand .close').click(function () {
+            $('.brands-grid .brand').removeClass('visible');
+        });
+        $('.brand .info').css('min-height', $('.brands-grid .brand').outerHeight());
+        $(window).resize(function () {
+            $('.brand .info').css('min-height', $('.brands-grid .brand').outerHeight());
+        });
+    });
+</script>

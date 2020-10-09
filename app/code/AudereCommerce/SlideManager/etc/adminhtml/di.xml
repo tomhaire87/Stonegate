@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="AudereCommerce\SlideManager\Controller\Adminhtml\Slider">
+        <arguments>
+            <argument name="registry" xsi:type="object">Magento\Framework\Registry</argument>
+            <argument name="resultPageFactory" xsi:type="object">Magento\Framework\View\Result\PageFactory</argument>
+            <argument name="sliderFactory" xsi:type="object">AudereCommerce\SlideManager\Model\SliderFactory</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Controller\Adminhtml\Slide">
+        <arguments>
+            <argument name="registry" xsi:type="object">Magento\Framework\Registry</argument>
+            <argument name="resultPageFactory" xsi:type="object">Magento\Framework\View\Result\PageFactory</argument>
+            <argument name="slideFactory" xsi:type="object">AudereCommerce\SlideManager\Model\SlideFactory</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Controller\Adminhtml\Slide\Save">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem</argument>
+            <argument name="uploaderFactory" xsi:type="object">Magento\MediaStorage\Model\File\UploaderFactory</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Model\System\Config\Slider">
+        <arguments>
+            <argument name="sliderCollectionFactory" xsi:type="object">AudereCommerce\SlideManager\Model\ResourceModel\Slider\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Block\Adminhtml\Slider\Edit">
+        <arguments>
+            <argument name="registry" xsi:type="object">Magento\Framework\Registry</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Block\Adminhtml\Slider\Edit\Tab\Main">
+        <arguments>
+            <argument name="locationConfig" xsi:type="object">AudereCommerce\SlideManager\Model\System\Config\Location</argument>
+            <argument name="statusConfig" xsi:type="object">AudereCommerce\SlideManager\Model\System\Config\Status</argument>
+        </arguments>
+    </type>
+    <type name="AudereCommerce\SlideManager\Block\Adminhtml\Slide\Edit\Tab\Main">
+        <arguments>
+            <argument name="sliderConfig" xsi:type="object">AudereCommerce\SlideManager\Model\System\Config\Slider</argument>
+            <argument name="subtitlePositionConfig" xsi:type="object">AudereCommerce\SlideManager\Model\System\Config\Subtitle\Position</argument>
+        </arguments>
+    </type>
+</config>

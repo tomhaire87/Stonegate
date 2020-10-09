@@ -1,0 +1,57 @@
+{
+  "namespace": "AudereCommerce",
+  "module": "Testimonial",
+  "models": {
+    "testimonial": {
+      "name": "Testimonial",
+      "comment": "Testimonial",
+      "generate_schema": true,
+      "generate_models": true,
+      "columns": {
+        "name": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Name"
+        },
+        "company": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": true,
+          "comment": "Company"
+        },
+        "image": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Image"
+        },
+        "testimonial": {
+          "datatype": "varchar",
+          "length": 255,
+          "nullable": false,
+          "comment": "Testimonial"
+        },
+        "active": {
+          "datatype": "int",
+          "length": 1,
+          "default": 0,
+          "nullable": false,
+          "comment": "Active"
+        },
+        "created_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT",
+          "comment": "Created At"
+        },
+        "updated_at": {
+          "datatype": "timestamp",
+          "nullable": false,
+          "default": "\\Magento\\Framework\\DB\\Ddl\\Table::TIMESTAMP_INIT_UPDATE",
+          "comment": "Updated At"
+        }
+      }
+    }
+  }
+}

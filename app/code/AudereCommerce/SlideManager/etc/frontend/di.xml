@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="AudereCommerce\SlideManager\Block\Slider">
+        <arguments>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface</argument>
+            <argument name="sliderCollectionFactory" xsi:type="object">AudereCommerce\SlideManager\Model\ResourceModel\Slider\CollectionFactory</argument>
+            <argument name="slideCollectionFactory" xsi:type="object">AudereCommerce\SlideManager\Model\ResourceModel\Slide\CollectionFactory</argument>
+            <argument name="locationConfig" xsi:type="object">AudereCommerce\SlideManager\Model\System\Config\Location</argument>
+        </arguments>
+    </type>
+</config>

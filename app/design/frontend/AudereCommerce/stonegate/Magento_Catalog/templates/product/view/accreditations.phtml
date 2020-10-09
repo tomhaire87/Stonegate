@@ -1,0 +1,21 @@
+<?php
+$_product = $block->getProduct();
+?>
+
+<div class="accreditations-left">
+    <?php if ($_product->getBestSeller() == '1'): ?>
+        <img src="<?php echo $this->getViewFileUrl('images/accreditations/best-seller.png'); ?>" class="best-seller" />
+    <?php endif; ?>
+    <?php if ($_product->getAccreditedTooling() == '1'): ?>
+        <img src="<?php echo $this->getViewFileUrl('images/accreditations/accredited-tooling.png'); ?>" class="accredited-tooling" />
+    <?php endif; ?>
+    <?php if ($_product->getFabricatorsFavourite() == '1'): ?>
+        <img src="<?php echo $this->getViewFileUrl('images/accreditations/fabricators-favourite.png'); ?>" class="fabricators-favourite" />
+    <?php endif; ?>
+</div>
+<?php if ($_product->getNewProduct() == '1'): ?>
+    <img src="<?php echo $this->getViewFileUrl('images/accreditations/new-product.png'); ?>" class="new-product" />
+<?php endif; ?>
+<?php if ($_product->getStonegateExclusive() == '1'): ?>
+    <img src="<?php echo $this->getViewFileUrl('images/accreditations/exclusive.png'); ?>" class="stonegate-exclusive" />
+<?php endif; ?>

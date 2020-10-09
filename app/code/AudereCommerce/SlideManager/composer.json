@@ -1,0 +1,26 @@
+{
+  "name": "auderecommerce/slide-manager",
+  "description": "Slide Manager",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "require": {
+    "php": "~7.0.0",
+    "magento/framework": "~1.0.0."
+  },
+  "extra": {
+    "map": [
+      [
+        "*",
+        "AudereCommerce/SlideManager"
+      ]
+    ]
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "AudereCommerce\\SlideManager\\": ""
+    }
+  }
+}

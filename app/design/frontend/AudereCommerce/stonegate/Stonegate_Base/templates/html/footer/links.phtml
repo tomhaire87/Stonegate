@@ -1,0 +1,51 @@
+<?php /* @var $this AudereCommerce\Stonegate\Block\StoreInfo */ ?>
+<?php
+$categoryCollection = $this->getCategoryCollection();
+?>
+<div class="col col-l">
+    <div class="title">
+        <span>Shop</span>
+    </div>
+    <ul class="quick-links">
+        <?php foreach ($categoryCollection as $category): ?>
+            <li><a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<div class="col col-l">
+    <div class="title">
+        <span>Account</span>
+    </div>
+    <ul class="quick-links">
+        <li><a href="<?php echo $this->getUrl('customer/account'); ?>">My Account</a></li>
+        <li><a href="<?php echo $this->getUrl('customer/account/edit/changepass'); ?>">Change Password</a></li>
+        <li><a href="<?php echo $this->getUrl('customer/account/forgotpassword'); ?>">Forgot Your Password?</a></li>
+        <li><a href="<?php echo $this->getUrl('sales/order/history'); ?>">Order Status</a></li>
+        <li><a href="<?php echo $this->getUrl('sales/order/history'); ?>">Order History</a></li>
+        <li><a href="<?php echo $this->getUrl('customer/address'); ?>">Manage Delivery Addresses</a></li>
+        <li><a href="<?php echo $this->getUrl('newsletter/manage'); ?>">E-mail Preferences</a></li>
+        <li><a href="<?php echo $this->getUrl('newsletter/manage'); ?>">Notification Preferences</a></li>
+        <li><a href="<?php echo $this->getUrl('wishlist'); ?>">Your Wishlist</a></li>
+    </ul>
+</div>
+<div class="col col-l">
+    <div class="title">
+        <span>Support</span>
+    </div>
+    <ul class="quick-links support">
+        <li><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
+        <li><a href="<?php echo $this->getUrl('customer-service'); ?>">Customer Service</a></li>
+        <li><a href="<?php echo $this->getUrl('website-terms-conditions-of-sale'); ?>">Terms & Conditions</a></li>
+        <li><a href="<?php echo $this->getUrl('delivery'); ?>">Delivery</a></li>
+        <li><a href="<?php echo $this->getUrl('privacy'); ?>">Privacy</a></li>
+        <li><a href="<?php echo $this->getBaseUrl(); ?>sitemap.xml">Sitemap</a></li>
+    </ul>
+    <img src="<?php echo $this->getViewFileUrl('images/iso-logo.png') ?>" style="max-width: 80px; margin-top: 50px" />
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "js/footer": {}
+        }
+    }
+</script>

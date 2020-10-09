@@ -1,0 +1,35 @@
+<?php
+$product = $block->getProduct();
+?>
+<?php if ($block->getDownloadGroups($product)): ?>
+    <div class="downloads-wrapper">
+        <?php foreach ($block->getDownloadGroups($product) as $group): ?>
+            <div class="group">
+                <div class="header">
+                    <span><?php echo $group->getName(); ?></span>
+                </div>
+                <div class="downloads">
+                    <table>
+                        <tbody>
+                        <?php foreach ($group->getDownloads() as $download): ?>
+                            <?php $type = $download->getType(); ?>
+                            <tr class="download">
+                                <td><?php echo $download->getName(); ?></td>
+                                <td>
+                                    <a href="<?php echo $block->getUrl('pub/media/downloads/download') . $download->getPath(); ?>"
+                                       download class="download-link">
+                                        <img alt="<?php echo $type->getName(); ?>"
+                                             src="<?php echo $block->getUrl('pub/media/downloads/tmp/download'); ?>/type/<?php echo $type->getImage() ?>"
+                                             class="type-icon"/>
+                                        <span>Download</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

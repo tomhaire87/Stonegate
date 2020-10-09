@@ -1,0 +1,36 @@
+<?php
+/**
+ * @var \AudereCommerce\Stonegate\Block\Checkout\Success
+ */
+$order = $block->getOrder();
+$billingAddress = $order->getBillingAddress();
+$address = $order->getShippingAddress();
+?>
+
+<h3 class="title"><?php /* @escapeNotVerified */ echo __('Delivery Information') ?></h3>
+<div class="column-container colspan-2">
+    <div class="column">
+        <h4 class="subtitle">Delivery Address</h4>
+        <ul class="address">
+            <li><?php echo $address['firstname'] . ' ' . $address['lastname']; ?></li>
+            <li><?php echo $address['street']; ?></li>
+            <li><?php echo $address['city']; ?></li>
+            <li><?php echo $address['region']; ?></li>
+            <li><?php echo $address['postcode']; ?></li>
+            <li><?php echo $address['country_id']; ?></li>
+        </ul>
+    </div>
+    <div class="column">
+        <h4 class="subtitle">Billing Address</h4>
+        <ul class="address">
+            <li><?php echo $billingAddress['firstname'] . ' ' . $billingAddress['lastname']; ?></li>
+            <li><?php echo $billingAddress['street']; ?></li>
+            <li><?php echo $billingAddress['city']; ?></li>
+            <li><?php echo $billingAddress['region']; ?></li>
+            <li><?php echo $billingAddress['region_id']; ?></li>
+            <li><?php echo $billingAddress['postcode']; ?></li>
+            <li><?php echo $billingAddress['country_id']; ?></li>
+        </ul>
+    </div>
+</div>
+<div class="divider"></div>

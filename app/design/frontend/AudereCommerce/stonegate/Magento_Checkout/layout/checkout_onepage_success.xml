@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.success.print.button" remove="true" />
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceContainer name="content">
+            <block class="AudereCommerce\Stonegate\Block\Checkout\Success" name="billing.delivery.information" template="Magento_Checkout::success/billingdelivery.phtml" />
+            <block class="AudereCommerce\Stonegate\Block\Product\Featured" name="featured.products" template="Magento_Cms::home/featured.phtml" />
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block class="AudereCommerce\Stonegate\Block\Checkout\Success" name="order.details" template="Magento_Checkout::success/summary.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,26 @@
+.products-grid .product-item .product-image-wrapper .product-image-photo {
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: none;
+}
+
+.catalog-product-view .fotorama__caption {
+    display: none;
+}
+
+.catalog-product-view .fotorama__stage__frame .fotorama__img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+}
+
+@media (max-width: 1024px) {
+    body:not(.page-product-grouped) .product-info-main .box-tocart .actions {
+        margin-bottom: 20px;
+        width: 100%
+    }
+}

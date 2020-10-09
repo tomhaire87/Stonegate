@@ -1,0 +1,31 @@
+<?php
+$stores = $block->getStores();
+$currentCurrency = $block->getCurrentStoreCurrency();
+$currencySymbol = $block->getCurrentCurrencySymbol();
+?>
+
+<div class="item stores">
+    <div class="dropdown">
+        <div class="dd-select current-store">
+            <img src="<?php /* @escapeNotVerified */ echo $this->getViewFileUrl('images/flags/flag_' . $currentCurrency . '.png') ?>" class="flag" />
+            <span class="currency"><span class="symbol"><?php echo $currencySymbol; ?> - </span><?php echo $currentCurrency; ?></span>
+        </div>
+        <div class="dd-content">
+            <ul class="store-list">
+                <?php foreach ($stores as $store): ?>
+                    <li class="store">
+                        <a href="<?php echo $store->getBaseUrl(); ?>"><?php echo $store->getName(); ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "js/dropdown": {}
+        }
+    }
+</script>

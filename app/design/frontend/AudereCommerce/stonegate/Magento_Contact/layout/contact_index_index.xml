@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="contactForm" destination="contact.col.main" />
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="contact.map" template="Magento_Contact::map.phtml" after="title.bar" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="contact.column.container" htmlTag="div" htmlClass="column-container">
+                <container name="contact.col.main" htmlTag="div" htmlClass="column-2-3"></container>
+                <container name="contact.col.side" htmlTag="div" htmlClass="column-1-3" after="contact.col.main">
+                    <block class="AudereCommerce\Stonegate\Block\StoreInfo" name="contact.details" template="Stonegate_Base::html/common/contact-details.phtml" />
+                    <block class="Magento\Framework\View\Element\Template" name="social.links.contact" template="Stonegate_Base::html/common/social-links.phtml" after="contact.details"/>
+                </container>
+            </container>
+            <container name="stonegate.additional" htmlTag="div" htmlClass="column-container colspan-2 info-columns section">
+                <container name="about.wrapper" htmlTag="div" htmlClass="column">
+                    <block class="Magento\Framework\View\Element\Template" name="about.stonegate" template="Stonegate_Base::content/common/about.phtml" />
+                </container>
+                <container name="newsletter.wrapper" htmlTag="div" htmlClass="column">
+                    <block class="Magento\Newsletter\Block\Subscribe" name="additional.newsletter.content" template="Magento_Newsletter::subscribe.phtml" />
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
