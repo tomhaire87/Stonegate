@@ -2,7 +2,6 @@
 
 namespace AudereCommerce\Stonegate\Block;
 
-use AudereCommerce\AccountsIntegration\Api\AccountRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 
 class Headerbar extends \Magento\Framework\View\Element\Template
@@ -13,10 +12,7 @@ class Headerbar extends \Magento\Framework\View\Element\Template
      */
     protected $_session;
 
-    /**
-     * @var AccountRepositoryInterface
-     */
-    protected $_accountRepository;
+
 
     /**
      * @var SearchCriteriaBuilderFactory
@@ -26,14 +22,12 @@ class Headerbar extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Customer\Model\Session $session,
-        AccountRepositoryInterface $accountRepository,
         SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory
     )
     {
         parent::__construct($context);
 
         $this->_session = $session;
-        $this->_accountRepository = $accountRepository;
         $this->_searchCriteriaBuilderFactory = $searchCriteriaBuilderFactory;
     }
 
@@ -73,12 +67,6 @@ class Headerbar extends \Magento\Framework\View\Element\Template
                 ->setPageSize(1)
                 ->create();
 
-            $accounts = $this->_accountRepository->getList($searchCriteria)->getItems();
-
-            if (!empty($accounts)) {
-                $account = reset($accounts);
-                return $account->getCode();
-            }
         }
 
         return false;
