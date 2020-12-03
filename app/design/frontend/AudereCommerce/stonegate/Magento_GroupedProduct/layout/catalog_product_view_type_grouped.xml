@@ -12,5 +12,6 @@
         <referenceContainer name="product.info.form.content">
             <block class="AudereCommerce\Stonegate\Block\Product\View\Type\Grouped" name="grouped.product.details" template="Magento_GroupedProduct::product/view/type/grouped.phtml" />
         </referenceContainer>
+        <move element="product.info" destination="content" as="grp" before="product.info.details"/>
     </body>
 </page>

@@ -5489,7 +5489,7 @@ body:not(.page-product-grouped) .product-info-main {
 
 .action.tocompare.grouped {
     display: inline-block;
-    float: left;
+    float: right;
     padding: 8px 17px;
     border: 1px solid #aaa;
     color: #aaa;
@@ -6870,23 +6870,26 @@ body:not(.page-product-grouped) .product-info-main {
                     visibility: hidden;
                     font-family: @font-awesome;
                     position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, 20%);
+                    top: 0;
+                    left: 0;
+                    transform: translate(0, 0);
                     display: inline-block;
                     z-index: 99;
                     min-width: 110px;
+					width:100%;
+					height:100%;
                     .sub-menu-transition();
                     .action {
-                        width: 44px;
-                        height: 44px;
-                        border: 2px solid #fff;
-                        border-radius: 100%;
-                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        border-radius: 0;
+                        position: absolute;
                         margin-right: 14px;
-                        float: left;
+						top:0;
+						left:0;
                         &:hover {
-                            background-color: rgba(255, 255, 255, 0.2);
+                            background-color: rgba(0, 0, 0, 0.2);
                         }
                         &::before {
                             display: none;
@@ -6898,9 +6901,19 @@ body:not(.page-product-grouped) .product-info-main {
                             transform: translate(-50%, -50%);
                             font-size: 1.7rem;
                             color: #fff;
+                            border: 2px solid #fff;
+                            border-radius: 100%;
+                            width: 44px;
+                            height: 44px;
+							&::before {
+								display: block;
+								position: relative;
+								top: 12px;
+								left: 14px;
+							}
                         }
                         &.towishlist {
-                            margin-right: 0;
+                            display: none;
                         }
                         &.tocompare {
                             display: none;
@@ -6916,7 +6929,7 @@ body:not(.page-product-grouped) .product-info-main {
                         visibility: visible;
                     }
                     .actions-secondary {
-                        transform: translate(-50%, -40%);
+                        transform: translate(0, 0);
                         visibility: visible;
                     }
                 }

@@ -20,8 +20,8 @@
 
     <section name="StorefrontProductPageWithPromoSection">
         <element name="TopPromoBanner" type="block" selector="//div[@class='column main']/div[@data-role='am-banners-lite']//img"/>
-        <element name="AfterBannerLite" type="block" selector="//div[@class='product-info-main']/div[@data-role='am-banners-lite']//img"/>
-        <element name="LabelBannerLite" type="block" selector="//div[@class='product media']/img[@class='am-banners-lite-label']"/>
+        <element name="AfterBannerLite" type="block" selector="//div[@class='product media']/img[@class='am-banners-lite-label']"/>
+        <element name="LabelBannerLite" type="block" selector="//div[@class='product-info-main']/div[@data-role='am-banners-lite']//img"/>
     </section>
 
 </sections>

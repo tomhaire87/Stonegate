@@ -23,10 +23,12 @@
         <referenceContainer name="product.info.media">
             <block class="Magento\Catalog\Block\Product\View" name="product.accreditations" template="Magento_Catalog::product/view/accreditations.phtml" before="product.info.media.image" />
             <block class="Magento\Catalog\Block\Product\View" name="delivery.countdown" template="Magento_Catalog::product/view/deliverycountdown.phtml" />
-            <block class="Magento\Catalog\Block\Product\View" name="banner.blocks" template="Magento_Catalog::product/view/banners.phtml" />
         </referenceContainer>
         <referenceContainer name="sidebar.additional">
             <block class="Magento\Theme\Block\Html\Topmenu" name="left.categories" template="Magento_Catalog::product/view/navigation/left.phtml" />
         </referenceContainer>
+        
+        <referenceBlock name="product.attributes" remove="true" />
+        
     </body>
 </page>
