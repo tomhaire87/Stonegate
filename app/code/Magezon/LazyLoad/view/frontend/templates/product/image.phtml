@@ -1,0 +1,21 @@
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */
+$dataHelper = $this->helper('Magezon\LazyLoad\Helper\Data');
+$lazyClasses = $dataHelper->getLazyClasses();
+$placeHolderUrl = $dataHelper->getPlaceHolderUrl();
+$customAttributes = $block->getCustomAttributes();
+if ($placeHolderUrl != $dataHelper->getDefaultPlaceHolderUrl()) {
+    $lazyClasses = str_replace('lazy-blur', '', $lazyClasses);
+}
+if (is_array($customAttributes)) {
+    $customAttributes = null;
+}
+?>
+
+<?php $dataHelper = $this->helper('Magezon\LazyLoad\Helper\Data') ?>
+<img class="photo image <?= $lazyClasses ?>"
+    <?= /* @escapeNotVerified */ $customAttributes ?>
+     src="<?= $placeHolderUrl ?>"
+    data-src="<?= /* @escapeNotVerified */ $block->getImageUrl() ?>"
+    width="<?= /* @escapeNotVerified */ $block->getWidth() ?>"
+    height="<?= /* @escapeNotVerified */ $block->getHeight() ?>"
+    alt="<?= /* @escapeNotVerified */ $block->stripTags($block->getLabel(), null, true) ?>" />
